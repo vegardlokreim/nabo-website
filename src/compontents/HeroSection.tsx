@@ -12,7 +12,7 @@ const HeroSection: React.FC<HeroProps> = ({ backgroundImage, heading, text, butt
     return (
         <div className="relative bg-cover bg-center bg-no-repeat h-[40vh]">
             <img src={backgroundImage} alt="Hero Background" className="absolute inset-0 w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-black opacity-50"></div>
+            <div className="absolute inset-0 bg-black opacity-20"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-9">
                 <h2 className="text-4xl font-bold text-white">{heading}</h2>
                 <p className="mt-4 text-lg text-white">{text}</p>
