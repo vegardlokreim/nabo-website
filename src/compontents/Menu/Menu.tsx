@@ -1,10 +1,22 @@
+import { useState } from "react";
 import MenuItem from "./MenuItem";
 
-export default function Menu({ menuData, menuTitle }: { menuData: Array<any>, menuTitle: string }) {
+export default function Menu({ menuData, title, description, backgroundImage }: { menuData: Array<any>, title: string, description: string, backgroundImage: string }) {
+
     return (
         <div className="flex flex-col w-[100%]">
-            <h2 className="text-4xl mb-6">{menuTitle}</h2>
-            <div className="flex flex-col gap-12">
+            <div className="relative bg-cover bg-center bg-no-repeat h-[25vh]">
+                <img src={backgroundImage} alt="Hero Background" className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black opacity-50"></div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-9">
+                    <h2 className="text-4xl font-bold text-white">{title}</h2>
+                    <p className="mt-4 text-lg text-white">{description}</p>
+
+                </div>
+            </div >
+
+
+            <div className="flex flex-col gap-8 px-2 py-4">
                 {
                     menuData.map(item => (
                         <MenuItem
@@ -18,6 +30,6 @@ export default function Menu({ menuData, menuTitle }: { menuData: Array<any>, me
                     ))
                 }
             </div>
-        </div>
+        </div >
     )
 }
