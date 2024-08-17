@@ -6,11 +6,15 @@ import Menu from "../compontents/Menu/Menu";
 function MenuPage() {
     return (
         <div>
-            <HeroSection backgroundImage={HeroImage} heading={"Dette er noe"} text={"Dette er en tekst"} buttonText={"Kjøp nå"} />
+            <HeroSection
+                backgroundImage={HeroImage}
+                heading={"Meny"}
+                text={"Dette er en tekst"}
+                buttonText={"Kjøp nå"}
+            />
             <div className="flex flex-col p-6 gap-12">
                 <Menu menuData={dimsum} menuTitle="Dim Sum" />
                 <Menu menuData={startersAndSoups} menuTitle="Starters and Soups" />
-
             </div>
 
         </div>

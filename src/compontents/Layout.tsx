@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import Logo from '../assets/nabo_logo.png'
+import Footer from "./Footer";
 
 function Layout() {
     return (
@@ -10,21 +11,9 @@ function Layout() {
                 <img src={Logo} className="h-12" />
             </header>
             <Outlet />
-            <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around items-center py-4">
-                <button className="text-gray-500">
-                    <Link to="/">Home</Link>
-                </button>
-                <button className="text-gray-500">
-                    <Link to="/meny">Bestill</Link>
-                </button>
-                <button className="text-gray-500">
-                    Bestill takeaway
-                </button>
-                <button className="text-gray-500">
-                    Kontakt ossss
-                </button>
-            </footer>
-        </div>
+            <Footer />
+
+        </div >
     );
 }
 
