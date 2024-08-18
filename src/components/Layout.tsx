@@ -1,8 +1,8 @@
 import { useMediaQuery } from "react-responsive";
 import Header from "./Header.tsx";
-import MobileHeader from "../../mobile/compontents/Header.tsx";
+import MobileHeader from "./MobileHeader.tsx";
 import { Outlet } from "react-router-dom";
-import Footer from "../../mobile/compontents/Footer.tsx";
+import Footer from "./MobileFooter.tsx";
 
 
 function Layout() {
