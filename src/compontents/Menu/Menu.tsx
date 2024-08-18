@@ -5,10 +5,10 @@ export default function Menu({ menuData, title, description, backgroundImage }: 
 
     return (
         <div className="flex flex-col w-[100%]">
-            <div className="relative bg-cover bg-center bg-no-repeat h-[25vh]">
-                <img src={backgroundImage} alt="Hero Background" className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-black opacity-50"></div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-9">
+            <div className="relative bg-cover bg-center bg-no-repeat h-[25vh] rounded-[200px]">
+                <img src={backgroundImage} alt="Hero Background" className="absolute inset-0 w-full h-full object-cover rounded-[20px]" />
+                <div className="absolute inset-0 bg-black opacity-50 rounded-[20px]"></div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-9 ">
                     <h2 className="text-4xl font-bold text-white">{title}</h2>
                     <p className="mt-4 text-lg text-white">{description}</p>
 
