@@ -1,23 +1,20 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { useMediaQuery } from 'react-responsive';
 
 import './index.css';
-import MobileApp from './mobile/MobileApp.tsx';
-import DesktopApp from "./desktop/DesktopApp.tsx";
+import App from "./App.tsx";
+import { Provider } from 'react-redux';
+import { persistor, store } from './redux/store/store.ts';
+import { PersistGate } from 'redux-persist/integration/react';
 
-function Main() {
-  const isMobile = useMediaQuery({ query: '(max-width: 200px)' });
-
-  return (
-    <div>
-      {isMobile ? <MobileApp /> : <DesktopApp />}
-    </div>
-  );
-}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Main />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+
   </StrictMode>,
 );

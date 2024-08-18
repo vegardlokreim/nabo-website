@@ -1,4 +1,4 @@
-import HeroSection from "../../mobile/compontents/HeroSection";
+import HeroSection from "../components/HeroSection";
 
 export default function HomePage() {
     return (<div className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden">

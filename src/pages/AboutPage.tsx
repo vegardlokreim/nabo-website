@@ -1,4 +1,4 @@
-import Restaurant from '../../assets/nabo_restaurant.jpg'
+import Restaurant from '../assets/nabo_restaurant.jpg'
 import AltHero from "../components/AltHero";
 
 export default function AboutPage() {
