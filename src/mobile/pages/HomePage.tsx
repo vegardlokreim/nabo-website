@@ -1,6 +1,6 @@
-import HeroSection from "../compontents/HeroSection"
-import FrontHero from '../assets/FrontHero.png'
-import Restaurant from '../assets/MainHero1.png'
+import HeroSection from "../compontents/HeroSection.tsx"
+import FrontHero from '../../assets/FrontHero.png'
+import Restaurant from '../../assets/MainHero1.png'
 
 export default function HomePage() {
     return (

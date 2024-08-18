@@ -1,4 +1,4 @@
-import Logo from '../assets/nabo_logo.png'
+import Logo from '../../assets/nabo_logo.png'
 
 export default function Header() {
     return (

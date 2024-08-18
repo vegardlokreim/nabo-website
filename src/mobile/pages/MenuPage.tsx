@@ -1,13 +1,13 @@
-import HeroSection from "../compontents/HeroSection";
-import HeroImage from '../assets/MainHero.png'
-import { dimsum } from "../assets/menuItems";
-import Menu from "../compontents/Menu/Menu";
+import HeroSection from "../compontents/HeroSection.tsx";
+import HeroImage from '../../assets/MainHero.png'
+import { dimsum } from "../../assets/menuItems.ts";
+import Menu from "../compontents/Menu/Menu.tsx";
 
 
-import Nigiri from '../assets/nigiriHero.png'
-import Dimsum from '../assets/dimsum.png'
-import Wok from '../assets/wok.png'
-import Maki from '../assets/maki.png'
+import Nigiri from '../../assets/nigiriHero.png'
+import Dimsum from '../../assets/dimsum.png'
+import Wok from '../../assets/wok.png'
+import Maki from '../../assets/maki.png'
 
 function MenuPage() {
     return (

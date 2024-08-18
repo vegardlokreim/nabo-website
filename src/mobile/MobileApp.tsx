@@ -5,7 +5,7 @@ import Layout from "./compontents/Layout.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 
-function App() {
+function MobileApp() {
     return (
         <BrowserRouter>
             <Routes>
@@ -20,4 +20,4 @@ function App() {
     )
 }
 
-export default App
+export default MobileApp

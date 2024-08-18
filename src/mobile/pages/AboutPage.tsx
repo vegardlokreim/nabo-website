@@ -1,5 +1,5 @@
-import Restaurant from '../assets/nabo_restaurant.jpg'
-import Collage from '../assets/aboutCollage.png'
+import Restaurant from '../../assets/nabo_restaurant.jpg'
+import Collage from '../../assets/aboutCollage.png'
 
 export default function AboutPage() {
 

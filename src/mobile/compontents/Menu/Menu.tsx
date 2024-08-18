@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MenuItem from "./MenuItem";
+import MenuItem from "./MenuItem.tsx";
 
 export default function Menu({ menuData, title, description, backgroundImage }: { menuData: Array<any>, title: string, description: string, backgroundImage: string }) {
 
