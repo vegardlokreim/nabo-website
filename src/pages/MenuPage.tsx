@@ -1,23 +1,14 @@
-import HeroSection from "../compontents/HeroSection";
-import HeroImage from '../assets/nabo_restaurant.jpg'
-import { dimsum, startersAndSoups } from "../assets/menuItems";
-import Menu from "../compontents/Menu/Menu";
+import { dimsum } from "../assets/menuItems";
+import Menu from "../components/Menu/Menu";
+import PageContainer from "../components/PageContainer";
 
 function MenuPage() {
     return (
-        <div>
-            <HeroSection
-                backgroundImage={HeroImage}
-                heading={"Meny"}
-                text={"Dette er en tekst"}
-                buttonText={"Kjøp nå"}
-            />
-            <div className="flex flex-col p-6 gap-12">
-                <Menu menuData={dimsum} menuTitle="Dim Sum" />
-                <Menu menuData={startersAndSoups} menuTitle="Starters and Soups" />
-            </div>
+        <PageContainer>
+            <Menu title="Dim Sum" description="Dette er vår sushimeny" backgroundImg="https://cdn.usegalileo.ai/sdxl10/69f9ae9a-d2c1-4a31-b2be-051b10bf0b46.png" data={dimsum} />
+            <Menu title="Dim Sum" description="Dette er vår sushimeny" backgroundImg="https://cdn.usegalileo.ai/sdxl10/69f9ae9a-d2c1-4a31-b2be-051b10bf0b46.png" data={dimsum} />
+        </PageContainer>
 
-        </div>
     )
 }
 
