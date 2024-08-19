@@ -2,12 +2,10 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import counterReducer from '../features/counter/counterSlice';
 import orderSlice from '../features/order/orderSlice';
 
 // Combine all reducers (if you have more, add them here)
 const rootReducer = combineReducers({
-    counter: counterReducer,
     order: orderSlice
 });
 

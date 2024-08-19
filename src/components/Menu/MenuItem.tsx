@@ -23,8 +23,9 @@ function MenuItem({ menuItemId, name, description, price, allergens }: MenuItemP
         dispatch(addItem({
             menuItemId,
             price,
-            quantity: 1,  // Increment by 1
-            title: name,  // Ensure title is also provided
+            quantity: 1,
+            title: name,
+            description
         }));
     };
 
@@ -33,20 +34,21 @@ function MenuItem({ menuItemId, name, description, price, allergens }: MenuItemP
             dispatch(addItem({
                 menuItemId,
                 price,
-                quantity: -1,  // Decrement by 1
-                title: name,  // Ensure title is also provided
+                quantity: -1,
+                title: name,
+                description
             }));
         }
     };
 
     return (
-        <div className="flex flex-col border-b-2 border-b-slate-200 py-8">
+        <div className="flex flex-col border-b-2 border-b-slate-200 py-8 px-4">
             {/* Menu item id, name, and price */}
             <div className="flex justify-between w-full items-start gap-8">
                 <div className="flex flex-col items-start gap-2 tracking-wide text-lg font-medium">
-                    <h3 className="text-sm">{menuItemId}. {name}</h3>
-                    <p className="text-sm">{price} kr - inneholder: ({allergens.join(', ')})</p>
+                    <h3 className="text-sm">{menuItemId}. {name} - <strong>kr {price},-</strong></h3>
                     <p className="text-sm">{description}</p>
+                    <p className="text-sm">inneholder: ({allergens.join(', ')})</p>
                 </div>
 
                 <div className="counter flex items-center">

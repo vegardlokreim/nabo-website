@@ -5,7 +5,6 @@ import HomePage from "./pages/HomePage.tsx";
 import MenuPage from "./pages/MenuPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
-import Counter from "./pages/Counter.tsx";
 import OrderSummary from "./pages/OrderSummary.tsx";
 
 function App() {
@@ -17,9 +16,7 @@ function App() {
                     <Route path="/meny" element={<MenuPage />} />
                     <Route path="/om-oss" element={<AboutPage />} />
                     <Route path="/kontakt" element={<ContactPage />} />
-                    <Route path="/count" element={<Counter />} />
                     <Route path="/bestill" element={<OrderSummary />} />
-
                 </Route>
             </Routes>
         </BrowserRouter>

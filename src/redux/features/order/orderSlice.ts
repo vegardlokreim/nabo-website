@@ -4,7 +4,8 @@ export interface MenuItem {
     menuItemId: string;
     price: number;
     quantity: number;
-    title: string; // Added title field
+    title: string;
+    description: string;
 }
 
 export interface OrderState {
@@ -19,23 +20,49 @@ export const orderSlice = createSlice({
     name: 'orders',
     initialState,
     reducers: {
-        // Get item and push it to the state's items array. If it's already present, increment quantity
         addItem: (state, action: PayloadAction<MenuItem>) => {
             const itemIndex = state.items.findIndex(
                 (item) => item.menuItemId === action.payload.menuItemId
             );
 
             if (itemIndex !== -1) {
-                // If item exists, increment its quantity
                 state.items[itemIndex].quantity += action.payload.quantity;
+
+                // If the updated quantity is zero or less, remove the item
+                if (state.items[itemIndex].quantity <= 0) {
+                    state.items.splice(itemIndex, 1);
+                }
             } else {
-                // If item does not exist, add it to the array
-                state.items.push(action.payload);
+                // Add new item only if the quantity is positive
+                if (action.payload.quantity > 0) {
+                    state.items.push(action.payload);
+                }
             }
         },
-        // Action to clear all items from the order
         clearOrder: (state) => {
             state.items = [];
+        },
+        updateItemQuantity: (
+            state,
+            action: PayloadAction<{ menuItemId: string; quantity: number }>
+        ) => {
+            const { menuItemId, quantity } = action.payload;
+            const itemIndex = state.items.findIndex(
+                (item) => item.menuItemId === menuItemId
+            );
+
+            if (itemIndex !== -1) {
+                state.items[itemIndex].quantity += quantity;
+
+                if (state.items[itemIndex].quantity <= 0) {
+                    state.items.splice(itemIndex, 1); // Remove item if quantity becomes 0 or less
+                }
+            }
+        },
+        removeItem: (state, action: PayloadAction<string>) => {
+            state.items = state.items.filter(
+                (item) => item.menuItemId !== action.payload
+            );
         },
     },
 });
@@ -49,6 +76,6 @@ export const selectTotalItems = (state: OrderState) =>
 export const selectSubtotal = (state: OrderState) =>
     state.items.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
 
-export const { addItem, clearOrder } = orderSlice.actions;
+export const { addItem, clearOrder, updateItemQuantity, removeItem } = orderSlice.actions;
 
 export default orderSlice.reducer;
