@@ -254,4 +254,4 @@ const OrderSummary: React.FC = () => {
 
 };
 
-export default OrderSummary;
+export default OrderSummary

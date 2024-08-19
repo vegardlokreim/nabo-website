@@ -36,7 +36,7 @@ function ConfirmOrderPage() {
     useEffect(() => {
         const fetchOrder = async () => {
             try {
-                const response = await fetch('https://us-central1-naborestaurant-d4228.cloudfunctions.net/getOrder', {
+                const response = await fetch('https://us-central1-naborestaurant-d4228.cloudfunctions.net/getOneOrder', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
