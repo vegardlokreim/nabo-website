@@ -34,10 +34,27 @@ function ConfirmOrderPage() {
     const [order, setOrder] = useState<FirestoreOrder | null>(null)
 
     useEffect(() => {
-        async function fetchOrder() {
-            const order: FirestoreOrder = (await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/getOrder', { id })).data
-            setOrder(order)
-        }
+        const fetchOrder = async () => {
+            try {
+                const response = await fetch('https://us-central1-naborestaurant-d4228.cloudfunctions.net/getOrder', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ id }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch the order');
+                }
+
+                const order: FirestoreOrder = await response.json();
+                setOrder(order);
+            } catch (error) {
+                console.error('Error fetching the order:', error);
+                // Handle the error appropriately here
+            }
+        };
 
         fetchOrder()
     })
