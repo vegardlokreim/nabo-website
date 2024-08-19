@@ -1,12 +1,11 @@
 import { useSelector } from 'react-redux';
 import Logo from '../assets/nabo_logo.png';
 import { RootState } from '../redux/store/store';
-import { selectTotalItems, selectSubtotal } from '../redux/features/order/orderSlice';
+import { selectTotalItems } from '../redux/features/order/orderSlice';
 import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
     const totalItems = useSelector((state: RootState) => selectTotalItems(state.order));
-    const subtotal = useSelector((state: RootState) => selectSubtotal(state.order));
     const navigate = useNavigate();
 
     const handleOrderNow = () => {
