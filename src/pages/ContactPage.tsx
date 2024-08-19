@@ -21,8 +21,8 @@ export default function ContactPage() {
                     </svg>
                 </div>
                 <div className="flex flex-col justify-center">
-                    <p className="text-[#181211] text-base font-medium leading-normal line-clamp-1">Opening Hours</p>
-                    <p className="text-[#886963] text-sm font-normal leading-normal line-clamp-2">Monday - Friday: 7:00 am - 8:00 pm Saturday - Sunday: 8:00 am - 8:00 pm</p>
+                    <p className="text-[#181211] text-base font-medium leading-normal line-clamp-1">Åpningstider</p>
+                    <p className="text-[#886963] text-sm font-normal leading-normal line-clamp-2">Mandag - Sændag: 14:00 - 22:00</p>
                 </div>
             </div>
             <div className="flex items-center gap-4 bg-white px-4 min-h-14">
@@ -33,7 +33,7 @@ export default function ContactPage() {
                         ></path>
                     </svg>
                 </div>
-                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">123 Main Street, San Francisco, CA 94118</p>
+                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">Essendrops gate 9, 0368 Oslo </p>
             </div>
             <div className="flex items-center gap-4 bg-white px-4 min-h-14">
                 <div className="text-[#181211] flex items-center justify-center rounded-lg bg-[#f4f1f0] shrink-0 size-10" data-icon="Phone" data-size="24px" data-weight="regular">
@@ -43,7 +43,7 @@ export default function ContactPage() {
                         ></path>
                     </svg>
                 </div>
-                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">(415) 123-4567</p>
+                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">23 20 28 33</p>
             </div>
             <div className="flex items-center gap-4 bg-white px-4 min-h-14">
                 <div className="text-[#181211] flex items-center justify-center rounded-lg bg-[#f4f1f0] shrink-0 size-10" data-icon="Envelope" data-size="24px" data-weight="regular">
@@ -53,9 +53,9 @@ export default function ContactPage() {
                         ></path>
                     </svg>
                 </div>
-                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">info@cafeverona.com</p>
+                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">post@naborestaurant.no</p>
             </div>
-            <h3 className="text-[#181211] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Social Media</h3>
+            <h3 className="text-[#181211] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Sosiale Medier</h3>
             <div className="flex items-center gap-4 bg-white px-4 min-h-14">
                 <div
                     className="text-[#181211] flex items-center justify-center rounded-lg bg-[#f4f1f0] shrink-0 size-10"
@@ -69,7 +69,7 @@ export default function ContactPage() {
                         ></path>
                     </svg>
                 </div>
-                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">@cafeveronasf</p>
+                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">@naborestaruant</p>
             </div>
             <div className="flex items-center gap-4 bg-white px-4 min-h-14">
                 <div className="text-[#181211] flex items-center justify-center rounded-lg bg-[#f4f1f0] shrink-0 size-10" data-icon="FacebookLogo" data-size="24px" data-weight="regular">
@@ -79,13 +79,13 @@ export default function ContactPage() {
                         ></path>
                     </svg>
                 </div>
-                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">/cafeveronasf</p>
+                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">/naborestaurant</p>
             </div>
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
-                    <p className="text-[#181211] text-base font-medium leading-normal pb-2">Name</p>
+                    <p className="text-[#181211] text-base font-medium leading-normal pb-2">Navn</p>
                     <input
-                        placeholder="Your name"
+                        placeholder="Navn"
                         className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
                         value=""
                     />
@@ -93,9 +93,9 @@ export default function ContactPage() {
             </div>
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
-                    <p className="text-[#181211] text-base font-medium leading-normal pb-2">Email / Phone</p>
+                    <p className="text-[#181211] text-base font-medium leading-normal pb-2">Telefon</p>
                     <input
-                        placeholder="Your email or phone"
+                        placeholder="Telefonnummer"
                         className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
                         value=""
                     />
@@ -103,9 +103,9 @@ export default function ContactPage() {
             </div>
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
-                    <p className="text-[#181211] text-base font-medium leading-normal pb-2">Message</p>
+                    <p className="text-[#181211] text-base font-medium leading-normal pb-2">Melding</p>
                     <textarea
-                        placeholder="Your message"
+                        placeholder="Skriv en melding til oss"
                         className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none min-h-36 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
                     ></textarea>
                 </label>
