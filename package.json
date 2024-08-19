@@ -11,7 +11,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://github.com/nabo-website/",
+  "homepage": ".",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "gh-pages": "^6.1.1",
