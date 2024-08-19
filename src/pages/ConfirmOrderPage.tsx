@@ -35,25 +35,9 @@ function ConfirmOrderPage() {
 
     useEffect(() => {
         const fetchOrder = async () => {
-            try {
-                const response = await fetch('https://us-central1-naborestaurant-d4228.cloudfunctions.net/getOneOrder', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ id }),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch the order');
-                }
-
-                const order: FirestoreOrder = await response.json();
-                setOrder(order);
-            } catch (error) {
-                console.error('Error fetching the order:', error);
-                // Handle the error appropriately here
-            }
+            const order = await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/getOneOrder', { id })
+            console.log(order)
+            setOrder(order.data.data)
         };
 
         fetchOrder()
