@@ -6,6 +6,7 @@ import MenuPage from "./pages/MenuPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import OrderSummary from "./pages/OrderSummary.tsx";
+import ConfirmOrderPage from "./pages/ConfirmOrderPage.tsx";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/om-oss" element={<AboutPage />} />
                     <Route path="/kontakt" element={<ContactPage />} />
                     <Route path="/bestill" element={<OrderSummary />} />
+                    <Route path="/confirm-order/:id" element={<ConfirmOrderPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>
