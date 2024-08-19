@@ -12,7 +12,7 @@ export default function Menu({ backgroundImg, title, description, data }: MenuPr
         <div className="mb-40">
             <MenuHero title={title} text={description} backgroundImg={backgroundImg} />
             {
-                data.map(item => <MenuItem menuItemId={item.menuItemId} name={item.name} description={item.description} price={item.price} allergens={item.allergens} />)
+                data.map(item => <MenuItem key={item.menuItemId} menuItemId={item.menuItemId} name={item.name} description={item.description} price={item.price} allergens={item.allergens} />)
             }
         </div>
     )

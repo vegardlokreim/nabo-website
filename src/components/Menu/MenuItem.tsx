@@ -46,7 +46,8 @@ function MenuItem({ menuItemId, name, description, price, allergens }: MenuItemP
             {/* Menu item id, name, and price */}
             <div className="flex justify-between w-full items-start gap-8">
                 <div className="flex flex-col items-start gap-2 tracking-wide text-lg font-medium">
-                    <h3 className="text-sm">{menuItemId}. {name} - <strong>kr {price},-</strong></h3>
+                    <h3 className="text-sm">{menuItemId}. {name}</h3>
+                    <p className="text-xs">kr {price},-</p>
                     <p className="text-sm">{description}</p>
                     <p className="text-sm">inneholder: ({allergens.join(', ')})</p>
                 </div>

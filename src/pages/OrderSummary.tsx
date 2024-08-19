@@ -121,7 +121,7 @@ const OrderSummary: React.FC = () => {
 
             {isLoading && (
                 <div className="flex justify-center items-center min-h-[200px]">
-                    <h2>ordren sendes...</h2>
+                    <h2>Sender ordre</h2>
                 </div>
             )}
 
@@ -130,7 +130,7 @@ const OrderSummary: React.FC = () => {
                     {items.length === 0 ? (
                         <p>Ingenting å vise</p>
                     ) : (
-                        <div>
+                        <div className="mb-16">
                             {items.map(item => (
                                 <div className="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between" key={item.menuItemId}>
                                     <div className="flex flex-col justify-center">
@@ -224,17 +224,17 @@ const OrderSummary: React.FC = () => {
                             )}
 
                             {orderType !== null && (
-                                <div className="flex justify-stretch">
+                                <div className="flex justify-stretch mt-4">
                                     <div className="flex flex-1 gap-3 flex-wrap justify-between">
                                         <button
                                             onClick={handleOrderSubmit}
-                                            className="mt-4 bg-red-500 text-white py-2 px-4 rounded"
+                                            className={'flex-1 py-2 px-4 rounded-full text-sm font-medium bg-red-500 text-white'}
                                         >
                                             <span className="truncate">Send bestilling</span>
                                         </button>
                                         <button
                                             onClick={handleClearOrder}
-                                            className="mt-4 bg-red-500 text-white py-2 px-4 rounded"
+                                            className={'flex-1 py-2 px-4 rounded-full text-sm font-medium bg-red-500 text-white'}
                                         >
                                             Slett alt
                                         </button>
