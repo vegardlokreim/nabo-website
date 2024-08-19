@@ -9,9 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://vegardlokreim.github.io/nabo-website",
+  "homepage": ".",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "gh-pages": "^6.1.1",
