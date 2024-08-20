@@ -121,14 +121,14 @@ const OrderSummary: React.FC = () => {
 
             {isLoading && (
                 <div className="flex justify-center items-center min-h-[200px]">
-                    <h2>Sender ordre</h2>
+                    <h2>Sender ordre, vennligst vent</h2>
                 </div>
             )}
 
             {!isLoading && (
                 <div>
                     {items.length === 0 ? (
-                        <p>Ingenting å vise</p>
+                        <p>Handlekurven er tom</p>
                     ) : (
                         <div className="mb-16">
                             {items.map(item => (
