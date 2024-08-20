@@ -7,6 +7,7 @@ import AboutPage from "./pages/AboutPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import OrderSummary from "./pages/OrderSummary.tsx";
 import ConfirmOrderPage from "./pages/ConfirmOrderPage.tsx";
+import OrderReceivedPage from "./pages/OrderRecievedPage.tsx";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/kontakt" element={<ContactPage />} />
                     <Route path="/bestill" element={<OrderSummary />} />
                     <Route path="/confirm-order/:id" element={<ConfirmOrderPage />} />
+                    <Route path="/received-order/:id" element={<OrderReceivedPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>

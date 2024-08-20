@@ -1,5 +1,5 @@
 import Restaurant from '../assets/nabo_restaurant.jpg'
-import AltHero from "../components/AltHero";
+import HeroSection from '../components/HeroSection';
 import PageContainer from '../components/PageContainer';
 
 export default function AboutPage() {
@@ -7,7 +7,7 @@ export default function AboutPage() {
         <PageContainer>
             <div className="@container">
                 <div className="@[480px]:p-4">
-                    <AltHero backgroundImg={Restaurant} title={"About"} text={"Om oss"} />
+                    <HeroSection backgroundImage={Restaurant} heading={"Om oss"} text={"Chef Nakamura's dedication to excellence has earned Sushi Umi a loyal following of discerning diners who appreciate the restaurant's commitment to quality and craftsmanship."} />
                 </div>
             </div>
             <h2 className="text-[#181411] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our Story</h2>

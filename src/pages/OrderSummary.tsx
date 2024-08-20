@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import PageContainer from '../components/PageContainer';
 import { clearOrder, selectOrderItems, selectSubtotal, updateItemQuantity } from '../redux/features/order/orderSlice';
 import { RootState } from '../redux/store/store';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 type RequestBody = {
     type: 'home' | 'table' | null,
@@ -28,6 +30,9 @@ const OrderSummary: React.FC = () => {
     const dispatch = useDispatch();
     const items = useSelector((state: RootState) => selectOrderItems(state.order));
     const subtotal = useSelector((state: RootState) => selectSubtotal(state.order));
+
+    const navigate = useNavigate();
+
 
     // Retrieve orderType from localStorage or default to null
     const [orderType, setOrderType] = useState<'home' | 'table' | null>(() => {
@@ -90,23 +95,18 @@ const OrderSummary: React.FC = () => {
                     })
                 };
 
-                const response = await fetch('https://us-central1-naborestaurant-d4228.cloudfunctions.net/createOrder', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(requestBody),
-                });
+                const order = await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/createOrder', requestBody)
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
+
+
 
                 // Clear localStorage and state after successful submission
                 localStorage.removeItem('orderType');
                 setOrderType(null);
                 dispatch(clearOrder());
                 setIsLoading(false)
+                navigate(`/received-order/${order.data.id}`)
+
 
             } catch (error) {
                 console.error('Error placing order:', error);
@@ -167,13 +167,13 @@ const OrderSummary: React.FC = () => {
                             <div className="flex justify-center gap-4 mb-4">
                                 <button
                                     onClick={() => setOrderType('home')}
-                                    className={`flex-1 py-2 px-4 rounded-full text-sm font-medium ${orderType === 'home' ? 'bg-red-500 text-white' : 'bg-[#EEEEEE] text-black'}`}
+                                    className={`flex-1 py-2 px-4 rounded-full text-sm font-medium ${orderType === 'home' ? 'bg-[#B2212B] text-white' : 'bg-[#EEEEEE] text-black'}`}
                                 >
                                     Bestill for henting
                                 </button>
                                 <button
                                     onClick={() => setOrderType('table')}
-                                    className={`flex-1 py-2 px-4 rounded-full text-sm font-medium ${orderType === 'table' ? 'bg-red-500 text-white' : 'bg-[#EEEEEE] text-black'}`}
+                                    className={`flex-1 py-2 px-4 rounded-full text-sm font-medium ${orderType === 'table' ? 'bg-[#B2212B] text-white' : 'bg-[#EEEEEE] text-black'}`}
                                 >
                                     Bestill til bordet
                                 </button>
@@ -229,13 +229,13 @@ const OrderSummary: React.FC = () => {
                                     <div className="flex flex-1 gap-3 flex-wrap justify-between">
                                         <button
                                             onClick={handleOrderSubmit}
-                                            className={'flex-1 py-2 px-4 rounded-full text-sm font-medium bg-red-500 text-white'}
+                                            className={'flex-1 py-2 px-4 rounded-full text-sm font-medium bg-[#B2212B] text-white'}
                                         >
                                             <span className="truncate">Send bestilling</span>
                                         </button>
                                         <button
                                             onClick={handleClearOrder}
-                                            className={'flex-1 py-2 px-4 rounded-full text-sm font-medium bg-red-500 text-white'}
+                                            className={'flex-1 py-2 px-4 rounded-full text-sm font-medium bg-[#B2212B] text-white'}
                                         >
                                             Slett alt
                                         </button>
