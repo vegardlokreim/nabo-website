@@ -10,7 +10,7 @@ export default function Footer() {
                             ></path>
                         </svg>
                     </div>
-                    <p className="text-[#181411] text-xs font-medium leading-normal tracking-[0.015em]">Forside</p>
+                    <p className="text-[#181411] text-xs font-medium leading-normal tracking-[0.015em]">Hjem</p>
                 </a>
                 <a className="just flex flex-1 flex-col items-center justify-end gap-2 text-[#897261]" href="/meny">
                     <div className="text-[#897261] flex h-8 items-center justify-center" data-icon="ShoppingBag" data-size="24px" data-weight="regular">
@@ -20,7 +20,7 @@ export default function Footer() {
                             ></path>
                         </svg>
                     </div>
-                    <p className="text-[#897261] text-xs font-medium leading-normal tracking-[0.015em]">Spis her</p>
+                    <p className="text-[#897261] text-xs font-medium leading-normal tracking-[0.015em]">Meny</p>
                 </a>
                 <a className="just flex flex-1 flex-col items-center justify-end gap-2 text-[#897261]" href="/meny">
                     <div className="text-[#897261] flex h-8 items-center justify-center" data-icon="ShoppingBag" data-size="24px" data-weight="regular">
@@ -54,7 +54,7 @@ export default function Footer() {
                     </div>
                     <p className="text-[#897261] text-xs font-medium leading-normal tracking-[0.015em]">Reserver bord</p>
                 </a>
-                <a className="just flex flex-1 flex-col items-center justify-end gap-1 text-[#897261]" href="/kontakt">
+                {/* <a className="just flex flex-1 flex-col items-center justify-end gap-1 text-[#897261]" href="/kontakt">
                     <div className="text-[#897261] flex h-8 items-center justify-center" data-icon="PhoneCall" data-size="24px" data-weight="regular">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
                             <path
@@ -63,7 +63,7 @@ export default function Footer() {
                         </svg>
                     </div>
                     <p className="text-[#897261] text-xs font-medium leading-normal tracking-[0.015em]">Kontakt</p>
-                </a>
+                </a> */}
 
 
 
