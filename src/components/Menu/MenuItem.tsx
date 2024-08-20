@@ -8,9 +8,11 @@ interface MenuItemProps {
     description: string;
     price: number;
     allergens: string[];
+    category: string;
+    isTakeaway: boolean
 }
 
-function MenuItem({ menuItemId, name, description, price, allergens }: MenuItemProps) {
+function MenuItem({ menuItemId, name, description, price, allergens, category, isTakeaway }: MenuItemProps) {
     const dispatch = useDispatch();
 
     // Get the current quantity of this item from the store
@@ -25,7 +27,9 @@ function MenuItem({ menuItemId, name, description, price, allergens }: MenuItemP
             price,
             quantity: 1,
             title: name,
-            description
+            description,
+            isTakeaway,
+            category
         }));
     };
 
@@ -36,7 +40,9 @@ function MenuItem({ menuItemId, name, description, price, allergens }: MenuItemP
                 price,
                 quantity: -1,
                 title: name,
-                description
+                description,
+                isTakeaway,
+                category
             }));
         }
     };

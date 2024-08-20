@@ -22,7 +22,7 @@ export default function ContactPage() {
                 </div>
                 <div className="flex flex-col justify-center">
                     <p className="text-[#181211] text-base font-medium leading-normal line-clamp-1">Åpningstider</p>
-                    <p className="text-[#886963] text-sm font-normal leading-normal line-clamp-2">Mandag - Sændag: 14:00 - 22:00</p>
+                    <p className="text-[#886963] text-sm font-normal leading-normal line-clamp-2">Mandag - Søndag: 14:00 - 22:00</p>
                 </div>
             </div>
             <div className="flex items-center gap-4 bg-white px-4 min-h-14">

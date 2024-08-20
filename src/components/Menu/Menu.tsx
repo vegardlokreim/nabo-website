@@ -1,3 +1,4 @@
+import { menuItems } from "../../assets/menuItems"
 import MenuHero from "../MenuHero"
 import MenuItem from "./MenuItem"
 
@@ -5,14 +6,16 @@ interface MenuProps {
     backgroundImg: string
     title: string
     description: string
-    data: Array<any>
+    category: string
 }
-export default function Menu({ backgroundImg, title, description, data }: MenuProps) {
+export default function Menu({ backgroundImg, title, description, category }: MenuProps) {
     return (
         <div className="mb-40">
             <MenuHero title={title} text={description} backgroundImg={backgroundImg} />
             {
-                data.map(item => <MenuItem key={item.menuItemId} menuItemId={item.menuItemId} name={item.name} description={item.description} price={item.price} allergens={item.allergens} />)
+                menuItems.map(item => {
+                    if (item.category === category) return <MenuItem key={item.menuItemId} menuItemId={item.menuItemId} name={item.name} description={item.description} price={item.price} allergens={item.allergens} category={item.category} isTakeaway={item.isTakeaway} />
+                })
             }
         </div>
     )
