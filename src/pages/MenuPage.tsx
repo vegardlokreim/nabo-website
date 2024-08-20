@@ -1,4 +1,3 @@
-import { menuItems } from "../assets/menuItems";
 import Menu from "../components/Menu/Menu";
 import PageContainer from "../components/PageContainer";
 import Nigiri from '../assets/nigiriHero.png'

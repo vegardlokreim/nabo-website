@@ -8,6 +8,16 @@ export default function HomePage() {
             <div className="@[480px]:p-4">
                 <HeroSection backgroundImage={'https://cdn.usegalileo.ai/sdxl10/7aee91c2-b484-43ed-bd4f-e244cb72a736.png'} heading={"Nabo Kitchen & Bar"} text={"Opplev vår sushi"} buttonText={"Bestill Nå"} buttonLink="/meny" />
             </div>
+
+
+            <div>
+                <h2>Dynamisk overskrift</h2>
+                <p>Dynamisk innhoød</p>
+            </div>
+
+
+
+
             <h2 className="text-[#181411] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
                 Our philosophy</h2>
             <p className="text-[#181411] text-base font-normal leading-normal pb-3 pt-1 px-4">

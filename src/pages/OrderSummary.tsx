@@ -45,7 +45,6 @@ const OrderSummary: React.FC = () => {
     const [pickupTime, setPickupTime] = useState('');
     const [tableNumber, setTableNumber] = useState('');
 
-    const [isLegal, setIsLegal] = useState<boolean>(true); // if there is both "retaurant items" AND "take away items", let the user know, this is not legal
 
 
 
