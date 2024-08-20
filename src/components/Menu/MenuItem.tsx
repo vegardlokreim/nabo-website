@@ -9,10 +9,9 @@ interface MenuItemProps {
     price: number;
     allergens: string[];
     category: string;
-    isTakeaway: boolean
 }
 
-function MenuItem({ menuItemId, name, description, price, allergens, category, isTakeaway }: MenuItemProps) {
+function MenuItem({ menuItemId, name, description, price, allergens, category }: MenuItemProps) {
     const dispatch = useDispatch();
 
     // Get the current quantity of this item from the store
@@ -28,7 +27,6 @@ function MenuItem({ menuItemId, name, description, price, allergens, category, i
             quantity: 1,
             title: name,
             description,
-            isTakeaway,
             category
         }));
     };
@@ -41,14 +39,13 @@ function MenuItem({ menuItemId, name, description, price, allergens, category, i
                 quantity: -1,
                 title: name,
                 description,
-                isTakeaway,
                 category
             }));
         }
     };
 
     return (
-        <div className="flex flex-col border-b-2 border-b-slate-200 py-8 px-4">
+        <div className="flex flex-col0 py-8 px-4">
             {/* Menu item id, name, and price */}
             <div className="flex justify-between w-full items-start gap-8">
                 <div className="flex flex-col items-start gap-2 tracking-wide text-lg font-medium">

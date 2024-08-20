@@ -37,7 +37,7 @@ const OrderSummary: React.FC = () => {
     // Retrieve orderType from localStorage or default to null
     const [orderType, setOrderType] = useState<'home' | 'table' | null>(() => {
         const savedOrderType = localStorage.getItem('orderType');
-        return savedOrderType ? (savedOrderType as 'home' | 'table') : null;
+        return savedOrderType ? (savedOrderType as 'home' | 'table') : 'home';
     });
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
@@ -157,7 +157,6 @@ const OrderSummary: React.FC = () => {
                                             >
                                                 +
                                             </button>
-                                            <p>{item.isTakeaway ? 'takeaway' : 'not takeaway'}</p>
 
 
                                         </div>
@@ -170,7 +169,7 @@ const OrderSummary: React.FC = () => {
                                 <div className="shrink-0"><p className="text-[#181211] text-base font-normal leading-normal">{subtotal} kr</p></div>
                             </div>
 
-                            <div className="flex justify-center gap-4 mb-4">
+                            {/* <div className="flex justify-center gap-4 mb-4">
                                 <button
                                     onClick={() => setOrderType('home')}
                                     className={`flex-1 py-2 px-4 rounded-full text-sm font-medium ${orderType === 'home' ? 'bg-[#B2212B] text-white' : 'bg-[#EEEEEE] text-black'}`}
@@ -183,7 +182,7 @@ const OrderSummary: React.FC = () => {
                                 >
                                     Bestill til bordet
                                 </button>
-                            </div>
+                            </div> */}
 
                             {orderType === 'home' && (
                                 <div className="flex flex-col gap-4 mt-4">

@@ -14,7 +14,7 @@ export default function Menu({ backgroundImg, title, description, category }: Me
             <MenuHero title={title} text={description} backgroundImg={backgroundImg} />
             {
                 menuItems.map(item => {
-                    if (item.category === category) return <MenuItem key={item.menuItemId} menuItemId={item.menuItemId} name={item.name} description={item.description} price={item.price} allergens={item.allergens} category={item.category} isTakeaway={item.isTakeaway} />
+                    if (item.category === category) return <MenuItem key={item.menuItemId} menuItemId={item.menuItemId} name={item.name} description={item.description} price={item.price} allergens={item.allergens} category={item.category} />
                 })
             }
         </div>

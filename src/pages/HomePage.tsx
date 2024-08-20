@@ -10,12 +10,6 @@ export default function HomePage() {
             </div>
 
 
-            <div>
-                <h2>Dynamisk overskrift</h2>
-                <p>Dynamisk innhoød</p>
-            </div>
-
-
 
 
             <h2 className="text-[#181411] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">

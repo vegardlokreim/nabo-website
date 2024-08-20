@@ -7,7 +7,6 @@ export interface MenuItem {
     title: string;
     description: string;
     category: string;
-    isTakeaway: boolean
 }
 
 export interface OrderState {
