@@ -4,6 +4,7 @@ export const menuItems = [
         "name": "Crispy Veggie Springrolls",
         "description": "4 stk mini vårruller serveres med dipsaus",
         "price": 105,
+        "takeawayPrice": 100,
         "allergens": ["cn", "gh"],
         "category": "dimsum",
         "isTakeaway": false

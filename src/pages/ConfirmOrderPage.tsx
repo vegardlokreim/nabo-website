@@ -29,13 +29,20 @@ function ConfirmOrderPage() {
     const [order, setOrder] = useState<FirestoreOrder | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    async function handleConfirm(message: string) {
+    // State to manage message selection and custom message
+    const [selectedMessage, setSelectedMessage] = useState<string>('Din levering er klar for henting om 20 minutter');
+    const [customMessage, setCustomMessage] = useState<string>('');
+
+    async function handleConfirm() {
         setLoading(true); // Start loading when confirm button is clicked
         setError(null); // Reset any previous error
 
+        // Determine the message to send
+        const messageToSend = selectedMessage === 'custom' ? customMessage : selectedMessage;
+
         try {
-            await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/confirmOrder', { id, message });
-            setOrder(prev => prev ? { ...prev, isConfirmed: true } : null); // Update the order as confirmed
+            await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/confirmOrder', { id, message: messageToSend });
+            setOrder(prev => prev ? { ...prev, isConfirmed: true } : null);
         } catch (error) {
             setError("Failed to confirm the order. Please try again.");
         } finally {
@@ -65,10 +72,48 @@ function ConfirmOrderPage() {
     return (
         <PageContainer>
             <h1>Confirm order {id} {order?.isConfirmed ? "Bekreftet" : "Ikke bekreftet"}</h1>
-            <button onClick={() => handleConfirm('Dette er en test')} disabled={loading}>
+
+            <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                <label className="flex flex-col min-w-40 flex-1">
+                    <p className="text-[#181211] text-base font-medium leading-normal pb-2">Melding</p>
+                    <select
+                        value={selectedMessage}
+                        onChange={(e) => setSelectedMessage(e.target.value)}
+                        className="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
+                    >
+                        <option value="Din levering er klar for henting om 20 minutter">Din levering er klar for henting om 20 minutter</option>
+                        <option value="Din levering er klar for henting om 30 minutter">Din levering er klar for henting om 30 minutter</option>
+                        <option value="custom">Skriv en melding til kunden</option>
+                    </select>
+                </label>
+            </div>
+
+
+            <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+
+
+                <label className="flex flex-col min-w-40 flex-1">
+                    {selectedMessage === 'custom' && (
+
+                        <textarea
+                            placeholder="Skriv en melding til kunden"
+                            value={customMessage}
+                            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none min-h-36 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
+
+                            onChange={(e) => setCustomMessage(e.target.value)}
+                        />
+                    )}
+                </label>
+            </div>
+
+
+
+
+
+            <button onClick={handleConfirm} disabled={loading}>
                 {loading ? "Bekrefter..." : "Bekreft ordre"}
             </button>
-        </PageContainer>
+        </PageContainer >
     );
 }
 
