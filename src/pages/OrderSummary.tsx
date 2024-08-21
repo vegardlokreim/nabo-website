@@ -46,9 +46,8 @@ const OrderSummary: React.FC = () => {
     const [errors, setErrors] = useState({
         name: "",
         phone: "",
+        note: "",
     });
-
-
 
 
     const [isLoading, setIsLoading] = useState(false);
@@ -81,7 +80,7 @@ const OrderSummary: React.FC = () => {
     };
 
     const validateForm = () => {
-        const newErrors = { name: "", phone: "" };
+        const newErrors = { name: "", phone: "", note: "" };
         let isValid = true;
 
         // Remove all whitespace from the phone number
@@ -94,6 +93,10 @@ const OrderSummary: React.FC = () => {
 
         if (!trimmedPhoneNumber || !/^\d{8}$/.test(trimmedPhoneNumber)) {
             newErrors.phone = "Telefonnummer må være 8 tall";
+            isValid = false;
+        }
+        if (!note.trim()) {
+            newErrors.note = "Vennligst oppgi informasjon om hentetid og dato";
             isValid = false;
         }
 
@@ -235,6 +238,8 @@ const OrderSummary: React.FC = () => {
                                         value={note}
                                         onChange={(e) => setNote(e.target.value)}
                                     ></textarea>
+                                    {errors.note && <p className="text-red-500 text-sm">{errors.note}</p>}
+
 
                                 </div>
                             )}
