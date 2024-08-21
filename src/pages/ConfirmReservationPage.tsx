@@ -39,7 +39,7 @@ function ConfirmReservationpage() {
 
         // Determine the message to send
 
-        const messageToSend = `Hei, ${reservation?.name}.\nDin bordreservasjon for:\n${reservation?.guests} personer\nDato:${reservation?.date}\n\ner nå bekreftet.\nVi ønsker dere hjertlig velkommen.`
+        const messageToSend = `\nDin bordreservasjon for:\n${reservation?.guests} personer\nDato:${reservation?.date}\n\ner nå bekreftet.\nVi ønsker dere hjertlig velkommen.`
 
         try {
             await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/confirmReservation', { id, message: messageToSend });
