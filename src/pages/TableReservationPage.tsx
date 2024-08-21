@@ -3,6 +3,7 @@ import axios from "axios";
 import HeroSection from "../components/HeroSection";
 import PageContainer from "../components/PageContainer";
 import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function TableReservationPage() {
     const [error, setError] = useState<string | null>(null)
@@ -10,7 +11,8 @@ export default function TableReservationPage() {
         name: "",
         phone: "",
         guests: "",
-        date: ""
+        date: "",
+        time: ""
     });
 
     const navigate = useNavigate()
@@ -26,7 +28,12 @@ export default function TableReservationPage() {
         e.preventDefault();
 
         try {
-            await axios.post("https://us-central1-naborestaurant-d4228.cloudfunctions.net/createTableReservation", formData);
+            await axios.post("https://us-central1-naborestaurant-d4228.cloudfunctions.net/createTableReservation", {
+                name: formData.name,
+                phone: formData.phone,
+                guests: formData.guests,
+                date: formData.date + ' - ' + formData.time
+            });
             navigate("/sendt-reservasjon")
         } catch (error) {
             console.error("Error creating reservation:", error);
@@ -80,19 +87,31 @@ export default function TableReservationPage() {
                             className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
                             value={formData.guests}
                             onChange={handleChange}
+                            type="number"
                         />
                     </label>
                 </div>
 
                 <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                     <label className="flex flex-col min-w-40 flex-1">
-                        <p className="text-[#181211] text-base font-medium leading-normal pb-2">Dato og klokkeslett</p>
+                        <p className="text-[#181211] text-base font-medium leading-normal pb-2">Dato</p>
                         <input
-                            type="datetime-local"  // Added this line
                             name="date"
-                            placeholder="Dato og klokkeslett"
+                            placeholder="Dato"
                             className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
                             value={formData.date}
+                            onChange={handleChange}
+                        />
+                    </label>
+                </div>
+                <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                    <label className="flex flex-col min-w-40 flex-1">
+                        <p className="text-[#181211] text-base font-medium leading-normal pb-2">Klokkeslett</p>
+                        <input
+                            name="time"
+                            placeholder="Klokkeslett"
+                            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
+                            value={formData.time}
                             onChange={handleChange}
                         />
                     </label>
