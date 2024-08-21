@@ -120,7 +120,7 @@ const OrderSummary: React.FC = () => {
                     ...(orderType === 'home' && {
                         user: {
                             name,
-                            phone,
+                            phone: phone.replace(/\s+/g, ""),
                             message: note,
                         }
                     }),
