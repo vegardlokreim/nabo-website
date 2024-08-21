@@ -21,6 +21,8 @@ export default function TableReservationPage() {
         time: ""
     });
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const navigate = useNavigate();
 
     const handleChange = (e: { target: { name: string; value: string; }; }) => {
@@ -82,6 +84,7 @@ export default function TableReservationPage() {
         }
 
         try {
+            setIsLoading(true)
             await axios.post("https://us-central1-naborestaurant-d4228.cloudfunctions.net/createTableReservation", {
                 name: formData.name,
                 phone: formData.phone.replace(/\s+/g, ""),
@@ -89,6 +92,7 @@ export default function TableReservationPage() {
                 date: formData.date + ' - ' + formData.time
             });
             navigate("/sendt-reservasjon");
+            setIsLoading(false)
         } catch (error) {
             console.error("Error creating reservation:", error);
             setError("Feil med reservasjon. Ring oss for å reservere bord.");
@@ -96,6 +100,7 @@ export default function TableReservationPage() {
     };
 
     if (error) return <p>{error}</p>;
+    if (isLoading) return <p>Sender reservasjon, venligst vent...</p>
 
     return (
         <PageContainer>
@@ -181,7 +186,7 @@ export default function TableReservationPage() {
                         type="submit"
                         className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#B2212B] text-white text-base font-bold leading-normal tracking-[0.015em]"
                     >
-                        <span className="truncate">Send</span>
+                        <span className="truncate">{isLoading ? 'Sender...' : 'Send'}</span>
                     </button>
                 </div>
             </form>
