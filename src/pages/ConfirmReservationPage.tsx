@@ -72,8 +72,9 @@ function ConfirmReservationpage() {
 
     return (
         <PageContainer>
-            <h1>Confirm reservation {id} {reservation?.isConfirmed ? "Bekreftet" : "Ikke bekreftet"}</h1>
+            <h1>Bekreft reservasjon fra {reservation?.name} - {reservation?.guests} personer - {reservation?.date}</h1>
 
+            <a href={`tel:${reservation?.phone}`}>Ring kunde på nr {reservation?.phone}</a>
 
             <button
                 onClick={handleConfirm} disabled={loading}
