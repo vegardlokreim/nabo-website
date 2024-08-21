@@ -45,6 +45,11 @@ const OrderSummary: React.FC = () => {
     const [pickupTime, setPickupTime] = useState('');
     const [tableNumber, setTableNumber] = useState('');
 
+    const [errors, setErrors] = useState({
+        name: "",
+        phone: "",
+    });
+
 
 
 
@@ -77,7 +82,33 @@ const OrderSummary: React.FC = () => {
         dispatch(updateItemQuantity({ menuItemId, quantity: -1 }));
     };
 
+    const validateForm = () => {
+        const newErrors = { name: "", phone: "" };
+        let isValid = true;
+
+        // Remove all whitespace from the phone number
+        const trimmedPhoneNumber = phone.replace(/\s+/g, "");
+
+        if (!name.trim()) {
+            newErrors.name = "Navn er påkrevd";
+            isValid = false;
+        }
+
+        if (!trimmedPhoneNumber || !/^\d{8}$/.test(trimmedPhoneNumber)) {
+            newErrors.phone = "Telefonnummer må være 8 tall";
+            isValid = false;
+        }
+
+
+
+        setErrors(newErrors);
+        return isValid;
+    };
+
     const handleOrderSubmit = async () => {
+        if (!validateForm()) {
+            return;
+        }
         const confirmed = window.confirm('Vil du utføre bestilling?');
         if (confirmed) {
             setIsLoading(true)
@@ -114,6 +145,8 @@ const OrderSummary: React.FC = () => {
             }
         }
     };
+
+
 
     return (
         <PageContainer>
@@ -154,8 +187,6 @@ const OrderSummary: React.FC = () => {
                                             >
                                                 +
                                             </button>
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -189,6 +220,8 @@ const OrderSummary: React.FC = () => {
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
                                     />
+                                    {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+
 
                                     <input
                                         placeholder="Telefon"
@@ -196,19 +229,16 @@ const OrderSummary: React.FC = () => {
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
                                     />
+                                    {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+
 
                                     <textarea
-                                        placeholder="Merknad til restauranten"
+                                        placeholder="Informasjon om henting / tilpassninger"
                                         className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-black focus:outline-0 focus:ring-0 border border-[#E0E0E0] bg-[#FFFFFF] focus:border-[#E0E0E0] min-h-36 placeholder:text-neutral-500 p-[15px] text-base font-normal leading-normal"
                                         value={note}
                                         onChange={(e) => setNote(e.target.value)}
                                     ></textarea>
-                                    <input
-                                        placeholder="Ønsket hentetidspunkt"
-                                        className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-black focus:outline-0 focus:ring-0 border border-[#E0E0E0] bg-[#FFFFFF] focus:border-[#E0E0E0] h-14 placeholder:text-neutral-500 p-[15px] text-base font-normal leading-normal"
-                                        value={pickupTime}
-                                        onChange={(e) => setPickupTime(e.target.value)}
-                                    />
+
                                 </div>
                             )}
 

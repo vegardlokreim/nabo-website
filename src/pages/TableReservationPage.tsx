@@ -3,10 +3,9 @@ import axios from "axios";
 import HeroSection from "../components/HeroSection";
 import PageContainer from "../components/PageContainer";
 import { useNavigate } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
 
 export default function TableReservationPage() {
-    const [error, setError] = useState<string | null>(null)
+    const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
@@ -14,34 +13,89 @@ export default function TableReservationPage() {
         date: "",
         time: ""
     });
+    const [errors, setErrors] = useState({
+        name: "",
+        phone: "",
+        guests: "",
+        date: "",
+        time: ""
+    });
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleChange = (e: { target: { name: string; value: string; }; }) => {
+        const { name, value } = e.target;
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [name]: value
+        });
+
+        // Reset error for the current field
+        setErrors({
+            ...errors,
+            [name]: ""
         });
     };
+    const validateForm = () => {
+        const newErrors = { name: "", phone: "", guests: "", date: "", time: "" };
+        let isValid = true;
+
+        // Remove all whitespace from the phone number
+        const trimmedPhoneNumber = formData.phone.replace(/\s+/g, "");
+
+        if (!formData.name.trim()) {
+            newErrors.name = "Navn er påkrevd";
+            isValid = false;
+        }
+
+        if (!trimmedPhoneNumber || !/^\d{8}$/.test(trimmedPhoneNumber)) {
+            newErrors.phone = "Telefonnummer må være 8 tall";
+            isValid = false;
+        }
+
+        if (!formData.guests.trim() || isNaN(Number(formData.guests)) || Number(formData.guests) <= 0) {
+            newErrors.guests = "Antall personer må være et gyldig nummer";
+            isValid = false;
+        }
+
+        if (!formData.date.trim()) {
+            newErrors.date = "Dato er påkrevd";
+            isValid = false;
+        }
+
+        if (!formData.time.trim()) {
+            newErrors.time = "Klokkeslett er påkrevd";
+            isValid = false;
+        }
+
+        setErrors(newErrors);
+        return isValid;
+    };
+
+
 
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
+        if (!validateForm()) {
+            return;
+        }
+
         try {
             await axios.post("https://us-central1-naborestaurant-d4228.cloudfunctions.net/createTableReservation", {
                 name: formData.name,
-                phone: formData.phone,
+                phone: formData.phone.replace(/\s+/g, ""),
                 guests: formData.guests,
                 date: formData.date + ' - ' + formData.time
             });
-            navigate("/sendt-reservasjon")
+            navigate("/sendt-reservasjon");
         } catch (error) {
             console.error("Error creating reservation:", error);
-            setError("Feil med reservasjon. Ring oss for å reservere bord.")
+            setError("Feil med reservasjon. Ring oss for å reservere bord.");
         }
     };
 
-    if (error) return <p>{error}</p>
+    if (error) return <p>{error}</p>;
 
     return (
         <PageContainer>
@@ -63,6 +117,7 @@ export default function TableReservationPage() {
                             value={formData.name}
                             onChange={handleChange}
                         />
+                        {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
                     </label>
                 </div>
                 <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
@@ -75,6 +130,7 @@ export default function TableReservationPage() {
                             value={formData.phone}
                             onChange={handleChange}
                         />
+                        {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
                     </label>
                 </div>
 
@@ -89,6 +145,7 @@ export default function TableReservationPage() {
                             onChange={handleChange}
                             type="number"
                         />
+                        {errors.guests && <p className="text-red-500 text-sm">{errors.guests}</p>}
                     </label>
                 </div>
 
@@ -102,6 +159,7 @@ export default function TableReservationPage() {
                             value={formData.date}
                             onChange={handleChange}
                         />
+                        {errors.date && <p className="text-red-500 text-sm">{errors.date}</p>}
                     </label>
                 </div>
                 <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
@@ -114,6 +172,7 @@ export default function TableReservationPage() {
                             value={formData.time}
                             onChange={handleChange}
                         />
+                        {errors.time && <p className="text-red-500 text-sm">{errors.time}</p>}
                     </label>
                 </div>
 
