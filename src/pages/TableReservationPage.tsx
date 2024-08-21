@@ -2,9 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import HeroSection from "../components/HeroSection";
 import PageContainer from "../components/PageContainer";
+import { useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
 export default function TableReservationPage() {
+    const [error, setError] = useState<string | null>(null)
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
@@ -12,7 +14,7 @@ export default function TableReservationPage() {
         date: ""
     });
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleChange = (e: { target: { name: string; value: string; }; }) => {
         setFormData({
@@ -25,15 +27,15 @@ export default function TableReservationPage() {
         e.preventDefault();
 
         try {
-            const response = await axios.post("https://us-central1-naborestaurant-d4228.cloudfunctions.net/createTableReservation", formData);
-
-            console.log("Reservation created successfully:", response.data);
-            // You can add further success handling here, like showing a success message or redirecting.
+            await axios.post("https://us-central1-naborestaurant-d4228.cloudfunctions.net/createTableReservation", formData);
+            navigate("/sendt-reservasjon")
         } catch (error) {
             console.error("Error creating reservation:", error);
-            // Handle the error, show error messages, etc.
+            setError("Feil med reservasjon. Ring oss for å reservere bord.")
         }
     };
+
+    if (error) return <p>{error}</p>
 
     return (
         <PageContainer>

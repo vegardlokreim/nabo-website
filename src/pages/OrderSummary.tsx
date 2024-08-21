@@ -100,9 +100,6 @@ const OrderSummary: React.FC = () => {
 
                 const order = await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/createOrder', requestBody)
 
-
-
-
                 // Clear localStorage and state after successful submission
                 localStorage.removeItem('orderType');
                 setOrderType(null);
