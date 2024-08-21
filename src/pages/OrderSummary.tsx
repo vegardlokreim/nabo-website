@@ -13,7 +13,6 @@ type RequestBody = {
         name: string,
         phone: string,
         message: string,
-        pickuptime: string
     },
     tableNumber?: number | string
 }
@@ -42,7 +41,6 @@ const OrderSummary: React.FC = () => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [note, setNote] = useState('');
-    const [pickupTime, setPickupTime] = useState('');
     const [tableNumber, setTableNumber] = useState('');
 
     const [errors, setErrors] = useState({
@@ -121,7 +119,6 @@ const OrderSummary: React.FC = () => {
                             name,
                             phone,
                             message: note,
-                            pickuptime: pickupTime
                         }
                     }),
                     ...(orderType === 'table' && {
