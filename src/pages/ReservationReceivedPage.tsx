@@ -1,8 +1,5 @@
-import { useParams } from "react-router-dom";
 import PageContainer from "../components/PageContainer";
 import { MenuItem } from "./OrderSummary";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 export type CreateOrderRequestBody = {
     type: 'home' | 'table',
