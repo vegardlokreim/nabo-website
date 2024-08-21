@@ -3,7 +3,6 @@ import axios from "axios";
 import HeroSection from "../components/HeroSection";
 import PageContainer from "../components/PageContainer";
 import { useNavigate } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
 
 export default function TableReservationPage() {
     const [error, setError] = useState<string | null>(null)
@@ -89,6 +88,7 @@ export default function TableReservationPage() {
                     <label className="flex flex-col min-w-40 flex-1">
                         <p className="text-[#181211] text-base font-medium leading-normal pb-2">Dato og klokkeslett</p>
                         <input
+                            type="datetime-local"  // Added this line
                             name="date"
                             placeholder="Dato og klokkeslett"
                             className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
