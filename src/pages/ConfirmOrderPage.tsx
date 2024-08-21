@@ -71,7 +71,31 @@ function ConfirmOrderPage() {
 
     return (
         <PageContainer>
-            <h1>Confirm order {id} {order?.isConfirmed ? "Bekreftet" : "Ikke bekreftet"}</h1>
+            <div className="flex flex-col gap-4">
+                <h1 className="text-xl font-bold">Bekreft reservasjon</h1>
+                <p>
+                    Navn: {order?.user?.name}
+                </p>
+                <p>
+                    telefon: {order?.user?.phone}
+                </p>
+                <h3 className="font-bold">Bestilling:</h3>
+                <ul>
+                    {
+                        order?.items.map(item => <p key={item.title}>{item.title} x {item.quantity}</p>)
+                    }
+                </ul>
+                <p>
+                    Melding fra kunde:<br /> {order?.user?.message}
+                </p>
+
+
+
+
+
+            </div>
+
+
 
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
@@ -87,7 +111,6 @@ function ConfirmOrderPage() {
                     </select>
                 </label>
             </div>
-
 
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
 
@@ -105,12 +128,21 @@ function ConfirmOrderPage() {
                     )}
                 </label>
             </div>
+            <a className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 py-4 flex-1 bg-[#B2212B] text-white text-base font-bold leading-normal tracking-[0.015em]" href={`tel:${order?.user?.phone}`}>
+
+                <span className="truncate">
+                    Ring kunde på nr {order?.user?.phone}
+                </span>
+
+            </a>
+            <br />
+            <br />
 
 
 
 
 
-            <button onClick={handleConfirm} disabled={loading}>
+            <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 py-4 flex-1 bg-[#B2212B] text-white text-base font-bold leading-normal tracking-[0.015em]" onClick={handleConfirm} disabled={loading}>
                 {loading ? "Bekrefter..." : "Bekreft ordre"}
             </button>
         </PageContainer >
