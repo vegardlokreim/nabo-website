@@ -136,7 +136,7 @@ const OrderSummary: React.FC = () => {
                         user: {
                             name,
                             phone: phone.replace(/\s+/g, ""),
-                            pickuptime: today + ' - kl: ' + time,
+                            pickuptime: today + ' - kl: ' + time?.toString(),
                             message: note,
                         }
                     }),
