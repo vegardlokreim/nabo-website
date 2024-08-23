@@ -3,10 +3,10 @@ import axios from "axios";
 import HeroSection from "../components/HeroSection";
 import PageContainer from "../components/PageContainer";
 import { useNavigate } from "react-router-dom";
-import { TextField } from "@mui/material";
+// import { TextField } from "@mui/material";
 
-import { DatePicker } from "@mui/x-date-pickers";
-import dayjs, { Dayjs } from "dayjs";
+// import { DatePicker } from "@mui/x-date-pickers";
+// import { Dayjs } from "dayjs";
 
 import "dayjs/locale/nb";  // Norwegian locale import
 import BasicDatePicker from "../components/BasicDatePicker";
@@ -82,21 +82,21 @@ export default function TableReservationPage() {
         return isValid;
     };
 
-    const handleDateChange = (newValue: Dayjs | null) => {
-        if (newValue) {
-            const formattedDate = newValue.format("DD.MM.YYYY");
-            setFormData({
-                ...formData,
-                date: formattedDate
-            });
+    // const handleDateChange = (newValue: Dayjs | null) => {
+    //     if (newValue) {
+    //         const formattedDate = newValue.format("DD.MM.YYYY");
+    //         setFormData({
+    //             ...formData,
+    //             date: formattedDate
+    //         });
 
-            // Reset error for date field
-            setErrors({
-                ...errors,
-                date: ""
-            });
-        }
-    };
+    //         // Reset error for date field
+    //         setErrors({
+    //             ...errors,
+    //             date: ""
+    //         });
+    //     }
+    // };
 
 
 
