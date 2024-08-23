@@ -247,6 +247,8 @@ const OrderSummary: React.FC = () => {
                                     <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                                         <label className="flex flex-col min-w-40 flex-1">
                                             <p className="text-[#181211] text-base font-medium leading-normal pb-2">Dato</p>
+                                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">Ps: Ønsker du å bestille takeaway en annen dato? <span className="underline"><a href="/kontakt">Kontakt oss</a></span> for å avtale dato og tid.</p>
+
                                             <input
                                                 name="phone"
                                                 placeholder="Dato"
