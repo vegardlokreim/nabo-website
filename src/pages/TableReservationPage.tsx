@@ -101,7 +101,7 @@ export default function TableReservationPage() {
                 name: formData.name,
                 phone: formData.phone.replace(/\s+/g, ""),
                 guests: formData.guests,
-                date: date + ' - kl: ' + time
+                date: date + ' - kl: ' + time?.hour() + ":" + time?.minute()
             });
             navigate("/sendt-reservasjon");
             setIsLoading(false)
