@@ -88,11 +88,9 @@ function ConfirmOrderPage() {
                 <p>
                     Melding fra kunde:<br /> {order?.user?.message}
                 </p>
-
-
-
-
-
+                <p>
+                    Ønsket hentetidspunkt:<br /> {order?.user?.pickuptime}
+                </p>
             </div>
 
 
@@ -107,6 +105,7 @@ function ConfirmOrderPage() {
                     >
                         <option value="Din levering er klar for henting om 20 minutter">Din levering er klar for henting om 20 minutter</option>
                         <option value="Din levering er klar for henting om 30 minutter">Din levering er klar for henting om 30 minutter</option>
+                        <option value={`Din levering er klar for henting kl ${order?.user?.pickuptime?.split('-')[1].trim()}`}>Din levering er klar for henting om 30 minutter (${order?.user?.pickuptime?.split('-')[1].trim()})</option>
                         <option value="custom">Skriv en melding til kunden</option>
                     </select>
                 </label>
