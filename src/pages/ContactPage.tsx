@@ -1,8 +1,8 @@
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import PageContainer from "../components/PageContainer";
 import { useState } from "react";
-import Contact from "./Contact";
-import TableReservationPage from "./TableReservationPage";
+import Contact from "../components/Contact";
+import TableReservationPage from "../components/TableReservation";
 
 export default function ContactPage() {
     const [alignment, setAlignment] = useState('contact');

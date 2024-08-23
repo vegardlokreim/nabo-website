@@ -7,7 +7,7 @@ import { DatePicker, LocalizationProvider, TimePicker } from "@mui/x-date-picker
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
 
-export default function TableReservationPage() {
+export default function TableReservation() {
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState({
         name: "",
