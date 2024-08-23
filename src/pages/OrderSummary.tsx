@@ -66,6 +66,11 @@ const OrderSummary: React.FC = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const handleTimeChange = (newValue: Dayjs | null) => {
+        setTime(newValue)
+
+    }
+
 
     // Save orderType to localStorage whenever it changes
     useEffect(() => {
@@ -136,7 +141,7 @@ const OrderSummary: React.FC = () => {
                         user: {
                             name,
                             phone: phone.replace(/\s+/g, ""),
-                            pickuptime: today + ' - kl: ' + time?.toString(),
+                            pickuptime: today + ' - kl: ' + time?.hour() + ":" + time?.minute(),
                             message: note,
                         }
                     }),
@@ -282,7 +287,7 @@ const OrderSummary: React.FC = () => {
                                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                                 <TimePicker
                                                     value={time}
-                                                    onChange={(newValue: Dayjs | null) => setTime(newValue)}
+                                                    onChange={handleTimeChange}
                                                     ampm={false}
                                                     minTime={dayjs().hour(hourNow >= 14 ? 14 : 14).minute(hourNow >= 14 ? minuteNow + 20 : 20)}
                                                     maxTime={dayjs().hour(21).minute(50)}
