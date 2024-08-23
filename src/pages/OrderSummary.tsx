@@ -110,10 +110,16 @@ const OrderSummary: React.FC = () => {
             isValid = false;
         }
 
-        if (!trimmedPhoneNumber || !/^\d{8}$/.test(trimmedPhoneNumber)) {
-            newErrors.phone = "Telefonnummer må være 8 tall";
+        if (
+            !trimmedPhoneNumber ||
+            !/^\d{8}$/.test(trimmedPhoneNumber) ||    // Check if it is 8 digits long
+            /^(.)\1{7}$/.test(trimmedPhoneNumber) ||  // Avoid repetitive numbers like 11111111
+            !/^[49]\d{7}$/.test(trimmedPhoneNumber)   // Ensure it starts with 4 or 9
+        ) {
+            newErrors.phone = "Telefonnummer må være et gyldig norsk mobilnummer, 8 siffer";
             isValid = false;
         }
+
 
         if (!time) {
             newErrors.time = "Klokkeslett er påkrevd";
