@@ -3,13 +3,11 @@ import axios from "axios";
 import HeroSection from "../components/HeroSection";
 import PageContainer from "../components/PageContainer";
 import { useNavigate } from "react-router-dom";
-// import { TextField } from "@mui/material";
-
-// import { DatePicker } from "@mui/x-date-pickers";
-// import { Dayjs } from "dayjs";
 
 import "dayjs/locale/nb";  // Norwegian locale import
-import BasicDatePicker from "../components/BasicDatePicker";
+import { DatePicker, LocalizationProvider, TimePicker } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 export default function TableReservationPage() {
     const [error, setError] = useState<string | null>(null);
@@ -28,6 +26,13 @@ export default function TableReservationPage() {
         date: "",
         time: ""
     });
+
+    const today = dayjs().format('YYYY-MM-DD');
+    const [date, setDate] = useState<Dayjs | null>(dayjs(today));
+    const hourNow = new Date().getHours()
+    const minuteNow = new Date().getMinutes()
+    const [time, setTime] = useState<Dayjs | null>(dayjs().hour(hourNow >= 14 ? hourNow : 14).minute(hourNow >= 14 ? minuteNow : 5));
+
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -68,12 +73,12 @@ export default function TableReservationPage() {
             isValid = false;
         }
 
-        if (!formData.date.trim()) {
+        if (!date) {
             newErrors.date = "Dato er påkrevd";
             isValid = false;
         }
 
-        if (!formData.time.trim()) {
+        if (!time) {
             newErrors.time = "Klokkeslett er påkrevd";
             isValid = false;
         }
@@ -81,23 +86,6 @@ export default function TableReservationPage() {
         setErrors(newErrors);
         return isValid;
     };
-
-    // const handleDateChange = (newValue: Dayjs | null) => {
-    //     if (newValue) {
-    //         const formattedDate = newValue.format("DD.MM.YYYY");
-    //         setFormData({
-    //             ...formData,
-    //             date: formattedDate
-    //         });
-
-    //         // Reset error for date field
-    //         setErrors({
-    //             ...errors,
-    //             date: ""
-    //         });
-    //     }
-    // };
-
 
 
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
@@ -113,7 +101,7 @@ export default function TableReservationPage() {
                 name: formData.name,
                 phone: formData.phone.replace(/\s+/g, ""),
                 guests: formData.guests,
-                date: formData.date + ' - ' + formData.time
+                date: date + ' - kl: ' + time
             });
             navigate("/sendt-reservasjon");
             setIsLoading(false)
@@ -178,37 +166,35 @@ export default function TableReservationPage() {
                     </label>
                 </div>
 
-                <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                    <label className="flex flex-col min-w-40 flex-1">
-                        <p className="text-[#181211] text-base font-medium leading-normal pb-2">Dato</p>
-                        {/* <input
-                            name="date"
-                            placeholder="Dato"
-                            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
-                            value={formData.date}
-                            onChange={handleChange}
-                        /> */}
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                        <label className="flex flex-col min-w-40 flex-1">
+                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">Dato</p>
+                            <DatePicker
+                                onChange={(newDate: Dayjs | null) => setDate(newDate)}
+                                value={date}
+                                format="DD.MM.YYYY"
+                                disablePast
+                            />
+                            {errors.date && <p className="text-red-500 text-sm">{errors.date}</p>}
+                        </label>
+                    </div>
 
-                        {/* Add material ui date picker with format dd.mm.åååå */}
-
-                        <BasicDatePicker />
-
-                        {errors.date && <p className="text-red-500 text-sm">{errors.date}</p>}
-                    </label>
-                </div>
-                <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                    <label className="flex flex-col min-w-40 flex-1">
-                        <p className="text-[#181211] text-base font-medium leading-normal pb-2">Klokkeslett</p>
-                        <input
-                            name="time"
-                            placeholder="Klokkeslett"
-                            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
-                            value={formData.time}
-                            onChange={handleChange}
-                        />
-                        {errors.time && <p className="text-red-500 text-sm">{errors.time}</p>}
-                    </label>
-                </div>
+                    <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                        <label className="flex flex-col min-w-40 flex-1">
+                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">Klokkeslett</p>
+                            <TimePicker
+                                value={time}
+                                onChange={(newValue: Dayjs | null) => setTime(newValue)}
+                                ampm={false}
+                                minTime={dayjs().hour(14).minute(0)}
+                                maxTime={dayjs().hour(21).minute(0)}
+                                timeSteps={{ hours: 1, minutes: 1 }}
+                            />
+                            {errors.time && <p className="text-red-500 text-sm">{errors.time}</p>}
+                        </label>
+                    </div>
+                </LocalizationProvider>
 
                 <div className="flex px-4 py-3">
                     <button
@@ -218,7 +204,7 @@ export default function TableReservationPage() {
                         <span className="truncate">{isLoading ? 'Sender...' : 'Send'}</span>
                     </button>
                 </div>
-            </form>
+            </form >
         </PageContainer >
     );
 }

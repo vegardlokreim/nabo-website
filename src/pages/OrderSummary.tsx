@@ -5,6 +5,11 @@ import { clearOrder, selectOrderItems, selectSubtotal, updateItemQuantity } from
 import { RootState } from '../redux/store/store';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "dayjs/locale/nb";  // Norwegian locale import
+
+import { LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 type RequestBody = {
     type: 'home' | 'table' | null,
@@ -13,6 +18,7 @@ type RequestBody = {
         name: string,
         phone: string,
         message: string,
+        pickuptime: string
     },
     tableNumber?: number | string
 }
@@ -43,10 +49,18 @@ const OrderSummary: React.FC = () => {
     const [note, setNote] = useState('');
     const [tableNumber, setTableNumber] = useState('');
 
+    const today = dayjs().format('DD-MM-YYYY');
+    const hourNow = new Date().getHours()
+    const minuteNow = new Date().getMinutes()
+    const [time, setTime] = useState<Dayjs | null>(dayjs().hour(hourNow >= 14 ? hourNow : 14).minute(hourNow >= 14 ? minuteNow : 20));
+
+
     const [errors, setErrors] = useState({
         name: "",
         phone: "",
         note: "",
+        date: "",
+        time: ""
     });
 
 
@@ -80,7 +94,7 @@ const OrderSummary: React.FC = () => {
     };
 
     const validateForm = () => {
-        const newErrors = { name: "", phone: "", note: "" };
+        const newErrors = { name: "", phone: "", note: "", date: "", time: "" };
         let isValid = true;
 
         // Remove all whitespace from the phone number
@@ -95,8 +109,9 @@ const OrderSummary: React.FC = () => {
             newErrors.phone = "Telefonnummer må være 8 tall";
             isValid = false;
         }
-        if (!note.trim()) {
-            newErrors.note = "Vennligst oppgi informasjon om hentetid og dato";
+
+        if (!time) {
+            newErrors.time = "Klokkeslett er påkrevd";
             isValid = false;
         }
 
@@ -121,6 +136,7 @@ const OrderSummary: React.FC = () => {
                         user: {
                             name,
                             phone: phone.replace(/\s+/g, ""),
+                            pickuptime: today + ' - kl: ' + time,
                             message: note,
                         }
                     }),
@@ -192,53 +208,94 @@ const OrderSummary: React.FC = () => {
                                 </div>
                             ))}
 
-                            <div className="flex items-center gap-4 bg-white px-4 min-h-14 justify-between">
+                            <div className="flex items-center gap- bg-white px-4 min-h-14 justify-between">
                                 <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">Sum</p>
                                 <div className="shrink-0"><p className="text-[#181211] text-base font-normal leading-normal">{subtotal} kr</p></div>
                             </div>
 
-                            {/* <div className="flex justify-center gap-4 mb-4">
-                                <button
-                                    onClick={() => setOrderType('home')}
-                                    className={`flex-1 py-2 px-4 rounded-full text-sm font-medium ${orderType === 'home' ? 'bg-[#B2212B] text-white' : 'bg-[#EEEEEE] text-black'}`}
-                                >
-                                    Bestill for henting
-                                </button>
-                                <button
-                                    onClick={() => setOrderType('table')}
-                                    className={`flex-1 py-2 px-4 rounded-full text-sm font-medium ${orderType === 'table' ? 'bg-[#B2212B] text-white' : 'bg-[#EEEEEE] text-black'}`}
-                                >
-                                    Bestill til bordet
-                                </button>
-                            </div> */}
-
                             {orderType === 'home' && (
-                                <div className="flex flex-col gap-4 mt-4">
-                                    <input
-                                        placeholder="Navn"
-                                        className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-black focus:outline-0 focus:ring-0 border border-[#E0E0E0] bg-[#FFFFFF] focus:border-[#E0E0E0] h-14 placeholder:text-neutral-500 p-[15px] text-base font-normal leading-normal"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                    />
-                                    {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+                                <div className="flex flex-col mt-4">
+                                    <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                                        <label className="flex flex-col min-w-40 flex-1">
+                                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">Navn</p>
+                                            <input
+                                                name="name"
+                                                placeholder="Navn"
+                                                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                            />
+                                            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+                                        </label>
+                                    </div>
+                                    <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                                        <label className="flex flex-col min-w-40 flex-1">
+                                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">Telefon</p>
+                                            <input
+                                                name="phone"
+                                                placeholder="Telefonnummer"
+                                                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
+                                                value={phone}
+                                                onChange={(e) => setPhone(e.target.value)}
+                                            />
+                                            {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+                                        </label>
+                                    </div>
 
 
-                                    <input
-                                        placeholder="Telefon"
-                                        className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-black focus:outline-0 focus:ring-0 border border-[#E0E0E0] bg-[#FFFFFF] focus:border-[#E0E0E0] h-14 placeholder:text-neutral-500 p-[15px] text-base font-normal leading-normal"
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
-                                    />
-                                    {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+
+                                    <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                                        <label className="flex flex-col min-w-40 flex-1">
+                                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">Dato</p>
+                                            <input
+                                                name="phone"
+                                                placeholder="Dato"
+                                                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
+                                                value={today}
+
+                                            />
+                                        </label>
+
+                                    </div>
+
+                                    <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                                        <label className="flex flex-col min-w-40 flex-1">
+                                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">Melding til restauranten</p>
+                                            <textarea
+                                                name="note"
+                                                placeholder="Melding til restauranten"
+                                                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
+                                                value={note}
+                                                onChange={(e) => setNote(e.target.value)}
+                                            ></textarea>
+
+                                        </label>
+                                    </div>
 
 
-                                    <textarea
-                                        placeholder="Informasjon om henting / tilpassninger"
-                                        className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-black focus:outline-0 focus:ring-0 border border-[#E0E0E0] bg-[#FFFFFF] focus:border-[#E0E0E0] min-h-36 placeholder:text-neutral-500 p-[15px] text-base font-normal leading-normal"
-                                        value={note}
-                                        onChange={(e) => setNote(e.target.value)}
-                                    ></textarea>
-                                    {errors.note && <p className="text-red-500 text-sm">{errors.note}</p>}
+                                    <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                                        <label className="flex flex-col min-w-40 flex-1">
+                                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">Ønsket hentetidspunkt</p>
+                                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">PS: Vi trenger minimum 20 minutter fra bestillingen mottas. Når vi har bekreftet ordren vil du motta en sms med tilgjengelig hentetidspunkt</p>
+                                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                                <TimePicker
+                                                    value={time}
+                                                    onChange={(newValue: Dayjs | null) => setTime(newValue)}
+                                                    ampm={false}
+                                                    minTime={dayjs().hour(hourNow >= 14 ? 14 : 14).minute(hourNow >= 14 ? minuteNow + 20 : 20)}
+                                                    maxTime={dayjs().hour(21).minute(50)}
+                                                    timeSteps={{ hours: 1, minutes: 1 }}
+                                                />
+                                                {errors.time && <p className="text-red-500 text-sm">{errors.time}</p>}
+                                            </LocalizationProvider>
+
+                                        </label>
+                                    </div>
+
+
+
+
+
 
 
                                 </div>
@@ -279,8 +336,9 @@ const OrderSummary: React.FC = () => {
                         </div>
                     )}
                 </div>
-            )}
-        </PageContainer>
+            )
+            }
+        </PageContainer >
     );
 
 
