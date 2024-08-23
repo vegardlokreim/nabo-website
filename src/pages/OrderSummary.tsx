@@ -52,9 +52,9 @@ const OrderSummary: React.FC = () => {
     const today = dayjs().format('DD-MM-YYYY');
     const hourNow = new Date().getHours()
     const minuteNow = new Date().getMinutes()
-    const [time, setTime] = useState<Dayjs | null>(dayjs().hour(hourNow >= 14 ? hourNow : 14).minute(hourNow >= 14 ? minuteNow : 20));
+    const [time, setTime] = useState<Dayjs | null>(dayjs().hour(hourNow >= 14 ? hourNow : 14).minute(hourNow >= 14 ? (minuteNow > 40 ? 0: minuteNow + 20) : 20));
 
-
+ 
     const [errors, setErrors] = useState({
         name: "",
         phone: "",
@@ -174,7 +174,6 @@ const OrderSummary: React.FC = () => {
     };
 
 
-
     return (
         <PageContainer>
             <h1 className="text-2xl font-bold mb-4">Send bestilling</h1>
@@ -252,13 +251,10 @@ const OrderSummary: React.FC = () => {
                                             {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
                                         </label>
                                     </div>
-
-
-
                                     <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                                         <label className="flex flex-col min-w-40 flex-1">
                                             <p className="text-[#181211] text-base font-medium leading-normal pb-2">Dato</p>
-                                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">Ps: Ønsker du å bestille takeaway en annen dato? <span className="underline"><a href="/kontakt">Kontakt oss</a></span> for å avtale dato og tid.</p>
+                                            <p className="text-[#181211] text-base font-medium leading-normal pb-2">Hente en annen dato? <span className="underline"><a href="/kontakt">Kontakt oss</a></span> eller ring oss.</p>
 
                                             <input
                                                 name="phone"
@@ -270,7 +266,6 @@ const OrderSummary: React.FC = () => {
                                         </label>
 
                                     </div>
-
                                     <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                                         <label className="flex flex-col min-w-40 flex-1">
                                             <p className="text-[#181211] text-base font-medium leading-normal pb-2">Melding til restauranten</p>
@@ -284,8 +279,6 @@ const OrderSummary: React.FC = () => {
 
                                         </label>
                                     </div>
-
-
                                     <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                                         <label className="flex flex-col min-w-40 flex-1">
                                             <p className="text-[#181211] text-base font-medium leading-normal pb-2">Ønsket hentetidspunkt</p>
@@ -295,7 +288,7 @@ const OrderSummary: React.FC = () => {
                                                     value={time}
                                                     onChange={handleTimeChange}
                                                     ampm={false}
-                                                    minTime={dayjs().hour(hourNow >= 14 ? 14 : 14).minute(hourNow >= 14 ? minuteNow + 20 : 20)}
+                                                    minTime={dayjs().hour(hourNow >= 14 ? hourNow : 14).minute(hourNow >= 14 ? (minuteNow  > 40 ? 0 : minuteNow + 20) : 20)}
                                                     maxTime={dayjs().hour(21).minute(50)}
                                                     timeSteps={{ hours: 1, minutes: 1 }}
                                                 />
@@ -304,13 +297,6 @@ const OrderSummary: React.FC = () => {
 
                                         </label>
                                     </div>
-
-
-
-
-
-
-
                                 </div>
                             )}
 
