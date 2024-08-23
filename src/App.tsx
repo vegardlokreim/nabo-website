@@ -4,13 +4,13 @@ import Layout from "./components/Layout.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import MenuPage from "./pages/MenuPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
-import ContactPage from "./pages/ContactPage.tsx";
 import OrderSummary from "./pages/OrderSummary.tsx";
 import ConfirmOrderPage from "./pages/ConfirmOrderPage.tsx";
 import OrderReceivedPage from "./pages/OrderRecievedPage.tsx";
 import TableReservationPage from "./pages/TableReservationPage.tsx";
 import ConfirmReservationpage from "./pages/ConfirmReservationPage.tsx";
 import ReservationReceivedPage from "./pages/ReservationReceivedPage.tsx";
+import ContactPage from "./pages/ContactPage.tsx";
 
 function App() {
     return (

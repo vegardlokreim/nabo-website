@@ -1,7 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import HeroSection from "../components/HeroSection";
-import PageContainer from "../components/PageContainer";
 import { useNavigate } from "react-router-dom";
 
 import "dayjs/locale/nb";  // Norwegian locale import
@@ -14,7 +12,7 @@ export default function TableReservationPage() {
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
-        guests: "",
+        guests: "2",
         date: "",
         time: ""
     })
@@ -120,17 +118,17 @@ export default function TableReservationPage() {
     if (isLoading) return <p>Sender reservasjon, venligst vent...</p>
 
     return (
-        <PageContainer>
-            <HeroSection
+        <>
+            {/* <HeroSection
                 backgroundImage="https://cdn.usegalileo.ai/stability/d7e3bdb5-0fed-4780-ab1f-5c3803a01c3b.png"
                 heading="Reserver bord"
                 text=""
                 buttonText=""
-            />
+            /> */}
 
-            <form onSubmit={handleSubmit}>
-                <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                    <label className="flex flex-col min-w-40 flex-1">
+            <form onSubmit={handleSubmit} onChange={() => console.log()} className="flex flex-col gap-4 mt-8">
+                <div className="flex flex-wrap items-end gap-4">
+                    <label className="flex flex-col min-w-80 flex-1">
                         <p className="text-[#181211] text-base font-medium leading-normal pb-2">Navn</p>
                         <input
                             name="name"
@@ -142,8 +140,8 @@ export default function TableReservationPage() {
                         {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
                     </label>
                 </div>
-                <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                    <label className="flex flex-col min-w-40 flex-1">
+                <div className="flex max-w-[480px] flex-wrap items-end gap-4">
+                    <label className="flex flex-col min-w-80 flex-1">
                         <p className="text-[#181211] text-base font-medium leading-normal pb-2">Telefon</p>
                         <input
                             name="phone"
@@ -156,8 +154,8 @@ export default function TableReservationPage() {
                     </label>
                 </div>
 
-                <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                    <label className="flex flex-col min-w-40 flex-1">
+                <div className="flex max-w-[480px] flex-wrap items-end gap-4">
+                    <label className="flex flex-col min-w-80 flex-1">
                         <p className="text-[#181211] text-base font-medium leading-normal pb-2">Antall personer</p>
                         <input
                             name="guests"
@@ -166,14 +164,15 @@ export default function TableReservationPage() {
                             value={formData.guests}
                             onChange={handleChange}
                             type="number"
+                            min={1}
                         />
                         {errors.guests && <p className="text-red-500 text-sm">{errors.guests}</p>}
                     </label>
                 </div>
 
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label className="flex flex-col min-w-40 flex-1">
+                    <div className="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label className="flex flex-col min-w-80 flex-1">
                             <p className="text-[#181211] text-base font-medium leading-normal pb-2">Dato</p>
                             <DatePicker
                                 onChange={(newDate: Dayjs | null) => setDate(newDate)}
@@ -185,8 +184,8 @@ export default function TableReservationPage() {
                         </label>
                     </div>
 
-                    <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label className="flex flex-col min-w-40 flex-1">
+                    <div className="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label className="flex flex-col min-w-80 flex-1">
                             <p className="text-[#181211] text-base font-medium leading-normal pb-2">Klokkeslett</p>
                             <TimePicker
                                 value={time}
@@ -201,7 +200,7 @@ export default function TableReservationPage() {
                     </div>
                 </LocalizationProvider>
 
-                <div className="flex px-4 py-3">
+                <div className="flex">
                     <button
                         type="submit"
                         className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#B2212B] text-white text-base font-bold leading-normal tracking-[0.015em]"
@@ -210,6 +209,6 @@ export default function TableReservationPage() {
                     </button>
                 </div>
             </form >
-        </PageContainer >
+        </>
     );
 }
