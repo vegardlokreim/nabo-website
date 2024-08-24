@@ -104,7 +104,7 @@ export default function TableReservation() {
                 name: formData.name,
                 phone: formData.phone.replace(/\s+/g, ""),
                 guests: formData.guests,
-                date: date + ' - kl: ' + time?.hour() + ":" + time?.minute()
+                date: date?.date() + "." + ((date?.month() ?? 0) + 1) + "." + date?.year() + ' - kl: ' + time?.hour() + ":" + time?.minute()
             });
             navigate("/sendt-reservasjon");
             setIsLoading(false)
@@ -175,7 +175,10 @@ export default function TableReservation() {
                         <label className="flex flex-col min-w-80 flex-1">
                             <p className="text-[#181211] text-base font-medium leading-normal pb-2">Dato</p>
                             <DatePicker
-                                onChange={(newDate: Dayjs | null) => setDate(newDate)}
+                                onChange={(newDate: Dayjs | null) => {
+                                    setDate(newDate)
+                                    console.log(newDate?.date() + "." + ((newDate?.month() ?? 0) + 1) + "." + newDate?.year())
+                                }}
                                 value={date}
                                 format="DD.MM.YYYY"
                                 disablePast
