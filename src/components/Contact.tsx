@@ -1,4 +1,17 @@
+import axios from "axios"
+import { useState } from "react"
+
 export default function Contact() {
+
+    //         const body: { to: string, text: string, replyTo: string, name: string } = req.body
+
+    const [name, setName] = useState('')
+    const [replyTo, setReplyTo] = useState('')
+    const [text, setText] = useState('')
+
+    const handleSendMessage = async () => {
+        await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/sendMail', { name, replyTo, text })
+    }
     return (
         <div>
 
@@ -82,19 +95,21 @@ export default function Contact() {
                 <label className="flex flex-col min-w-40 flex-1">
                     <p className="text-[#181211] text-base font-medium leading-normal pb-2">Navn</p>
                     <input
+                        onChange={e => setName(e.target.value)}
                         placeholder="Navn"
                         className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
-                        value=""
+                        value={name}
                     />
                 </label>
             </div>
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
-                    <p className="text-[#181211] text-base font-medium leading-normal pb-2">Telefon</p>
+                    <p className="text-[#181211] text-base font-medium leading-normal pb-2">epost</p>
                     <input
-                        placeholder="Telefonnummer"
+                        onChange={(event) => setReplyTo(event.target.value)}
+                        placeholder="Epost"
                         className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
-                        value=""
+                        value={replyTo}
                     />
                 </label>
             </div>
@@ -102,8 +117,10 @@ export default function Contact() {
                 <label className="flex flex-col min-w-40 flex-1">
                     <p className="text-[#181211] text-base font-medium leading-normal pb-2">Melding</p>
                     <textarea
+                        onChange={e => setText(e.target.value)}
                         placeholder="Skriv en melding til oss"
                         className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none min-h-36 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
+                        value={text}
                     ></textarea>
                 </label>
             </div>
@@ -111,7 +128,7 @@ export default function Contact() {
                 <button
                     className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#B2212B] text-white text-base font-bold leading-normal tracking-[0.015em]"
                 >
-                    <span className="truncate">Send</span>
+                    <span onClick={handleSendMessage} className="truncate">Send</span>
                 </button>
             </div>
         </div>
