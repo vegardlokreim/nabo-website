@@ -7,12 +7,17 @@ interface HeroProps {
     text: string;
     buttonText?: string;
     buttonLink?: string;
+    buttonText2?: string;
+    buttonLink2?: string;
 }
 
-const HeroSection: React.FC<HeroProps> = ({ backgroundImage, heading, text, buttonText, buttonLink }) => {
+const HeroSection: React.FC<HeroProps> = ({ backgroundImage, heading, text, buttonText, buttonLink, buttonText2, buttonLink2 }) => {
     const navigate = useNavigate()
     const handleButtonClick = () => {
         if (buttonLink) navigate(buttonLink)
+    }
+    const handleButtonClick2 = () => {
+        if (buttonLink2) navigate(buttonLink2)
     }
     return (
         <div className="rounded-lg relative bg-cover bg-center bg-no-repeat h-[40vh] mb-4">
@@ -21,11 +26,18 @@ const HeroSection: React.FC<HeroProps> = ({ backgroundImage, heading, text, butt
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-9">
                 <h2 className="text-4xl font-bold text-white">{heading}</h2>
                 <p className="large:px-40 medium:px-12 small:px-8 mt-4 text-lg text-white">{text}</p>
-                {
-                    (buttonText && buttonLink) && <button className="mt-6 bg-[#B2212B] text-white font-bold py-2 px-4 rounded" onClick={handleButtonClick}>
-                        {buttonText}
-                    </button>
-                }
+                <div className="flex flex-row gap-4">
+                    {
+                        (buttonText && buttonLink) && <button className="mt-6 bg-[#B2212B] text-white font-bold py-2 px-4 rounded" onClick={handleButtonClick}>
+                            {buttonText}
+                        </button>
+                    }
+                    {
+                        (buttonText2 && buttonLink2) && <button className="mt-6 bg-[#B2212B] text-white font-bold py-2 px-4 rounded" onClick={handleButtonClick2}>
+                            {buttonText2}
+                        </button>
+                    }
+                </div>
             </div>
         </div>
     );

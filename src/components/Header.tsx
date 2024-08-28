@@ -25,9 +25,9 @@ export default function Header() {
             </div>
             <div className="flex flex-1 justify-end gap-8">
                 <div className="flex items-center gap-9">
-                    <a className="text-[#181411] text-sm font-medium leading-normal" href="/">Forside</a>
-                    <a className="text-[#181411] text-sm font-medium leading-normal" href="/meny">Meny</a>
-                    <a className="text-[#181411] text-sm font-medium leading-normal" href="/om-oss">Om oss</a>
+                    <a className="text-[#181411] text-sm font-medium leading-normal" href="/">Hjem</a>
+                    <a className="text-[#181411] text-sm font-medium leading-normal" href="/meny">Takeaway</a>
+                    <a className="text-[#181411] text-sm font-medium leading-normal" href="/om-oss">Om</a>
                     <a className="text-[#181411] text-sm font-medium leading-normal" href="/kontakt">Kontakt</a>
                 </div>
 

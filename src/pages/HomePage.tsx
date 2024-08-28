@@ -6,16 +6,16 @@ export default function HomePage() {
         <PageContainer>
 
             <div className="@[480px]:p-4">
-                <HeroSection backgroundImage={'https://cdn.usegalileo.ai/sdxl10/7aee91c2-b484-43ed-bd4f-e244cb72a736.png'} heading={"Nabo Kitchen & Bar"} text={"Opplev vår sushi"} buttonText={"Bestill Nå"} buttonLink="/meny" />
+                <HeroSection backgroundImage={'https://cdn.usegalileo.ai/sdxl10/7aee91c2-b484-43ed-bd4f-e244cb72a736.png'} heading={"Nabo Kitchen & Bar"} text={"sushirestaurant med uteservering ved siden av colosseum kino på majorstuen"} buttonText={"Bestill Nå"} buttonLink="/meny" buttonText2="Reserver bord" buttonLink2="/kontakt" />
             </div>
 
 
 
 
             <h2 className="text-[#181411] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
-                Our philosophy</h2>
+                Suhsirestaurant på Majorstuen</h2>
             <p className="text-[#181411] text-base font-normal leading-normal pb-3 pt-1 px-4">
-                Nabo Kitchen & Bar har servert Oslos befolkning det beste innen japansk og kinesisk mat i over snart 30 år. Vi ligger midt plassert midt i hjertet av Majorstuen, ved siden av Colosseum Kino. Vi er det perfekte stedet for et måltid før eller etter en film. Restauranten vår er kjent for sin elegante innredning og vennlige personale, og tilbyr en rolig flukt fra byens travle liv.
+                Nabo Kitchen & Bar har servert Oslos befolkning det beste innen japansk og kinesisk mat i over snart 30 år. Vi ligger midt plassert midt i hjertet av Majorstuen, ved siden av Colosseum Kino. Vi er det perfekte stedet for et måltid før eller etter en kino. Restauranten vår er kjent for sin elegante innredning og vennlige personale, og tilbyr en rolig flukt fra byens travle liv.
             </p>
             <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
                 <div className="flex flex-col gap-3">
@@ -36,8 +36,9 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <h2 className="text-[#181411] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
-                What our guests are saying</h2>
+            {/* <h2 className="text-[#181411] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+                What our guests are saying
+                </h2>
             <div className="flex flex-col gap-8 overflow-x-hidden bg-white p-4">
                 <div className="flex flex-col gap-3 bg-white">
                     <p className="text-[#181411] text-base font-normal leading-normal">
@@ -66,7 +67,7 @@ export default function HomePage() {
                     </p>
 
                 </div>
-            </div>
+            </div> */}
 
         </PageContainer >
     )
