@@ -5,7 +5,7 @@ import Contact from "../components/Contact";
 import TableReservationPage from "../components/TableReservation";
 
 export default function ContactPage() {
-    const [alignment, setAlignment] = useState('contact');
+    const [alignment, setAlignment] = useState('tablereservation');
 
     const handleChange = (
         event: React.MouseEvent<HTMLElement>,
