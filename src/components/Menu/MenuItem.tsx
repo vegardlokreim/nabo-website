@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/store/store';  // Adjust the path based on your structure
 import { addItem } from '../../redux/features/order/orderSlice';
+import { all } from 'axios';
 
 interface MenuItemProps {
     menuItemId: string;
@@ -45,14 +46,22 @@ function MenuItem({ menuItemId, name, description, price, allergens, category }:
     };
 
     return (
-        <div className="flex flex-col0 py-8 px-4">
+        <div className="flex flex-col0 py-4 px-2">
             {/* Menu item id, name, and price */}
-            <div className="flex justify-between w-full items-start gap-8">
+            <div className="flex justify-between w-full items-start">
                 <div className="flex flex-col items-start gap-2 tracking-wide text-lg font-medium">
                     <h3 className="text-sm">{menuItemId}. {name}</h3>
                     <p className="text-xs">kr {price},-</p>
                     <p className="text-sm">{description}</p>
-                    <p className="text-sm">inneholder: ({allergens.join(', ')})</p>
+                    {allergens.length > 0 && <p className="text-sm text-red-900">{allergens.map(allergen => {
+                        if (allergen == 'sk') return 'skalldyr'
+                        if (allergen == 'bl') return 'bløtdyr'
+                        if (allergen == 'f') return 'fisk'
+                        if (allergen == 'e') return 'egg'
+                        if (allergen == 'gh') return 'gluten'
+                        if (allergen == 'so') return 'soya'
+                        if (allergen == 'se') return 'sesam'
+                    }).join(', ')}</p>}
                 </div>
 
                 <div className="counter flex items-center">

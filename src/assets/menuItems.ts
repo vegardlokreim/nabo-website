@@ -619,7 +619,7 @@ export const menuItems = [
         "name": "Surimi nigiri",
         "description": "2 stk nigiri med crabstick",
         "category": "choisNigiri",
-        "allergens": ["sk", "f, e", "bl", "gl"],
+        "allergens": ["sk", "f", "e", "bl", "gh"],
         "price": 39,
     },
     {
@@ -688,7 +688,7 @@ export const menuItems = [
         "name": "Surimi sashimi",
         "description": "3 stk sashimi av crabstick",
         "category": "choisSashimi",
-        "allergens": ["sk", "f, e", "bl", "gl"],
+        "allergens": ["sk", "f", "e", "bl", "gh"],
         "price": 39,
     },
     {
@@ -731,7 +731,7 @@ export const menuItems = [
         "name": "Coca Cola",
         "description": "",
         "category": "brus",
-        "allergens": [""],
+        "allergens": [],
         "price": 45,
     },
     {
@@ -739,7 +739,7 @@ export const menuItems = [
         "name": "Coca Cola Zero",
         "description": "",
         "category": "brus",
-        "allergens": [""],
+        "allergens": [],
         "price": 45,
     },
     {
@@ -747,7 +747,7 @@ export const menuItems = [
         "name": "Fanta Zero",
         "description": "",
         "category": "brus",
-        "allergens": [""],
+        "allergens": [],
         "price": 45,
     },
 
@@ -756,7 +756,7 @@ export const menuItems = [
         "name": "Sprite Zero",
         "description": "",
         "category": "brus",
-        "allergens": [""],
+        "allergens": [],
         "price": 45,
     },
     {
@@ -764,7 +764,7 @@ export const menuItems = [
         "name": "Redbull",
         "description": "",
         "category": "brus",
-        "allergens": [""],
+        "allergens": [],
         "price": 45,
     },
 
@@ -775,7 +775,7 @@ export const menuItems = [
         "name": "Ekstra sushiris",
         "description": "",
         "category": "tilbehor",
-        "allergens": [""],
+        "allergens": [],
         "price": 12,
     },
     {
@@ -783,7 +783,7 @@ export const menuItems = [
         "name": "Ekstra jasminris",
         "description": "",
         "category": "tilbehor",
-        "allergens": [""],
+        "allergens": [],
         "price": 12,
     },
     {
@@ -791,7 +791,7 @@ export const menuItems = [
         "name": "Ekstra kokosris",
         "description": "",
         "category": "tilbehor",
-        "allergens": [""],
+        "allergens": [],
         "price": 12,
     },
     {
@@ -799,7 +799,7 @@ export const menuItems = [
         "name": "Ekstra ingefær",
         "description": "",
         "category": "tilbehor",
-        "allergens": [""],
+        "allergens": [],
         "price": 12,
     },
 
@@ -810,7 +810,7 @@ export const menuItems = [
         "name": "Ekstra teriyakisaus",
         "description": "",
         "category": "saus",
-        "allergens": [""],
+        "allergens": [],
         "price": 12,
     },
     {
@@ -818,7 +818,7 @@ export const menuItems = [
         "name": "Ekstra hoisinsaus",
         "description": "",
         "category": "saus",
-        "allergens": [""],
+        "allergens": [],
         "price": 12,
     },
     {
@@ -826,7 +826,7 @@ export const menuItems = [
         "name": "Ekstra sweet chili saus",
         "description": "",
         "category": "saus",
-        "allergens": [""],
+        "allergens": [],
         "price": 12,
     },
     {
@@ -834,7 +834,7 @@ export const menuItems = [
         "name": "Ekstra chili paste (sterk)",
         "description": "",
         "category": "saus",
-        "allergens": [""],
+        "allergens": [],
         "price": 12,
     },
     {
@@ -842,7 +842,7 @@ export const menuItems = [
         "name": "Ekstra ponzusaus",
         "description": "",
         "category": "saus",
-        "allergens": [""],
+        "allergens": [],
         "price": 12,
     },
     {
@@ -850,7 +850,7 @@ export const menuItems = [
         "name": "Ekstra chili mayo",
         "description": "",
         "category": "saus",
-        "allergens": [""],
+        "allergens": [],
         "price": 12,
     },
 ]

@@ -10,7 +10,7 @@ interface MenuProps {
 }
 export default function Menu({ backgroundImg, title, description, category }: MenuProps) {
     return (
-        <div className="mb-40">
+        <div className="mb-2">
             <MenuHero title={title} text={description} backgroundImg={backgroundImg} />
             {
                 menuItems.map(item => {
