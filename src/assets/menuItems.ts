@@ -547,7 +547,7 @@ export const menuItems = [
         "menuItemId": "22",
         "name": "Tom Ka Gai",
         "description": "nudelsuppe med kyllingfilet & grønnsaker,chili, sitrongress og kokosmelk",
-        "category": "wokFriedNoodlesAndRice",
+        "category": "thaiSpicyNoodleSoup",
         "allergens": ["f", "gh"],
         "price": 170,
 
