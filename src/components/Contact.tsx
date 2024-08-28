@@ -15,15 +15,12 @@ export default function Contact() {
         console.log(response.data)
     }
     return (
-        <div>
+        <div className="pt-8">
 
 
             {/* <HeroSection backgroundImage="https://cdn.usegalileo.ai/stability/d7e3bdb5-0fed-4780-ab1f-5c3803a01c3b.png" heading="Kontakt oss" text="Send oss en melding" buttonText={""} /> */}
 
-            <h1 className="text-[#181211] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 text-left pb-3 pt-5">Our Location</h1>
-            <p className="text-[#181211] text-base font-normal leading-normal pb-3 pt-1 px-4">
-                Book a table by calling us or send inquiries to our email address. We will get back to you as soon as possible.
-            </p>
+
             <div className="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
                 <div className="text-[#181211] flex items-center justify-center rounded-lg bg-[#f4f1f0] shrink-0 size-12" data-icon="Clock" data-size="24px" data-weight="regular">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
@@ -45,7 +42,7 @@ export default function Contact() {
                         ></path>
                     </svg>
                 </div>
-                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">Essendrops gate 9, 0368 Oslo </p>
+                <a target="_blank" href="https://www.google.com/maps/dir//Sushi+%26+Wok+%2F+NABO+Sushi,+Essendrops+gate+9,+0368+Oslo/@59.9296209,10.7119074,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x46416ddad5020783:0x736ebe0372a26957!2m2!1d10.7119074!2d59.9296209!3e0?entry=ttu&g_ep=EgoyMDI0MDgyNi4wIKXMDSoASAFQAw%3D%3D"><p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">Essendrops gate 9, 0368 Oslo </p></a>
             </div>
             <div className="flex items-center gap-4 bg-white px-4 min-h-14">
                 <div className="text-[#181211] flex items-center justify-center rounded-lg bg-[#f4f1f0] shrink-0 size-10" data-icon="Phone" data-size="24px" data-weight="regular">
@@ -55,7 +52,7 @@ export default function Contact() {
                         ></path>
                     </svg>
                 </div>
-                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">23 20 28 33</p>
+                <a href="tel:23202833"><p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">23 20 28 33</p></a>
             </div>
             <div className="flex items-center gap-4 bg-white px-4 min-h-14">
                 <div className="text-[#181211] flex items-center justify-center rounded-lg bg-[#f4f1f0] shrink-0 size-10" data-icon="Envelope" data-size="24px" data-weight="regular">
@@ -65,7 +62,7 @@ export default function Contact() {
                         ></path>
                     </svg>
                 </div>
-                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">post@naborestaurant.no</p>
+                <a href="mailto:post@naborestaurant.no"><p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">post@naborestaurant.no</p></a>
             </div>
             <h3 className="text-[#181211] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Sosiale Medier</h3>
             <div className="flex items-center gap-4 bg-white px-4 min-h-14">
@@ -81,7 +78,7 @@ export default function Contact() {
                         ></path>
                     </svg>
                 </div>
-                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">@naborestaruant</p>
+                <a target="_blank" href="https://www.instagram.com/nabokitchenbar/"><p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">@naborestaruant</p></a>
             </div>
             <div className="flex items-center gap-4 bg-white px-4 min-h-14">
                 <div className="text-[#181211] flex items-center justify-center rounded-lg bg-[#f4f1f0] shrink-0 size-10" data-icon="FacebookLogo" data-size="24px" data-weight="regular">
@@ -91,7 +88,7 @@ export default function Contact() {
                         ></path>
                     </svg>
                 </div>
-                <p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">/naborestaurant</p>
+                <a target="_blank" href="https://www.facebook.com/nabokitchenbar/?locale=nb_NO"><p className="text-[#181211] text-base font-normal leading-normal flex-1 truncate">/naborestaurant</p></a>
             </div>
             <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
