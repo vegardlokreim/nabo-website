@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 max-h-16">
             <div className="flex gap-2 bg-white">
                 <a className="just flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#181411]" href="/">
                     <div className="text-[#181411] flex h- items-center justify-center" data-icon="House" data-size="24px" data-weight="fill">

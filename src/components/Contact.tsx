@@ -10,7 +10,9 @@ export default function Contact() {
     const [text, setText] = useState('')
 
     const handleSendMessage = async () => {
-        await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/sendMail', { name, replyTo, text })
+        console.log('sending message')
+        const response = await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/sendMail', { name, replyTo, text })
+        console.log(response.data)
     }
     return (
         <div>
