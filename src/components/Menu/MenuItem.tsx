@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/store/store';  // Adjust the path based on your structure
 import { addItem } from '../../redux/features/order/orderSlice';
-import { all } from 'axios';
 
 interface MenuItemProps {
     menuItemId: string;
