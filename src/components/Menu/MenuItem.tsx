@@ -60,6 +60,11 @@ function MenuItem({ menuItemId, name, description, price, allergens, category }:
                         if (allergen == 'gh') return 'gluten'
                         if (allergen == 'so') return 'soya'
                         if (allergen == 'se') return 'sesam'
+                        if (allergen == 'cn') return 'cashewnøtter'
+                        if (allergen == 'lu') return 'lupin'
+                        if (allergen == 'p') return 'peanøtter'
+                        if (allergen == 'mn') return 'mandler'
+                        if (allergen == 'm') return 'melk'
                     }).join(', ')}</p>}
                 </div>
 
