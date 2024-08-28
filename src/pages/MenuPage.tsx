@@ -83,7 +83,7 @@ const MenuPage: React.FC = () => {
                     {menuCategories.map((menu) => (
                         <div
                             key={menu.category}
-                            className={`p-8 cursor-pointer transition-colors whitespace-nowrap ${activeCategory === menu.category ? 'text-[#B2212B]' : ''}`}
+                            className={`p-4 cursor-pointer transition-colors whitespace-nowrap ${activeCategory === menu.category ? 'text-[#B2212B]' : ''}`}
                             onClick={() => handleCategoryClick(menu.category)}
                         >
                             {menu.title}
