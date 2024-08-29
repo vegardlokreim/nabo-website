@@ -19,7 +19,7 @@ export default function Contact() {
             setReplyTo("");
             setName("");
             setText("");
-            return <h2>Din melding er sendt</h2>
+            alert("Meldingen ble sendt!")
         }
 
 
