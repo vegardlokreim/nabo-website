@@ -457,7 +457,7 @@ export const menuItems = [
     {
         "menuItemId": "93",
         "name": "Dimsum Crispy Wonton",
-        "description": "3 stk. fylte wontons med reker og svinekjøtt. Serveres med kimchi og dipsaus",
+        "description": "4 stk. fylte wontons med reker og svinekjøtt. Serveres med kimchi og dipsaus",
         "category": "dimsum",
         "allergens": ["se", "gh", "bl", "so"],
         "price": 73

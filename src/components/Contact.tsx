@@ -8,12 +8,23 @@ export default function Contact() {
     const [name, setName] = useState('')
     const [replyTo, setReplyTo] = useState('')
     const [text, setText] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleSendMessage = async () => {
         console.log('sending message')
+        setIsLoading(true)
         const response = await axios.post('https://us-central1-naborestaurant-d4228.cloudfunctions.net/sendMail', { name, replyTo, text })
-        console.log(response.data)
+        if (response.status === 200) {
+            setIsLoading(false)
+            setReplyTo("");
+            setName("");
+            return <h2>Din melding er sendt</h2>
+        }
+
+
     }
+
+    if (isLoading) return <h2>Sender melding, venligst vent.</h2>
     return (
         <div className="pt-8">
 

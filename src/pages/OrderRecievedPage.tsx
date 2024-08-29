@@ -74,7 +74,7 @@ function OrderReceivedPage() {
 
             {
                 order?.type === 'home' && (
-                    <p>Du vil motta en SMS på nr: {order.user?.phone} med en bekreftelse av din bestilling innen kort tid. For spørsmål: Ring oss på nr 22 33 44 55</p>
+                    <p>Du vil motta en SMS på nr: {order.user?.phone} med en bekreftelse av din bestilling innen kort tid. For spørsmål: Ring oss på nr <a href="tel:23202833">23 20 28 33</a></p>
                 )
             }
         </PageContainer>
