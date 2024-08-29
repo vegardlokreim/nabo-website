@@ -8,6 +8,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
 
 export default function TableReservation() {
+    const [text, setText] = useState<string>('')
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState({
         name: "",
@@ -104,7 +105,8 @@ export default function TableReservation() {
                 name: formData.name,
                 phone: formData.phone.replace(/\s+/g, ""),
                 guests: formData.guests,
-                date: date?.date() + "." + ((date?.month() ?? 0) + 1) + "." + date?.year() + ' - kl: ' + time?.hour() + ":" + (time?.minute() as number >= 10 ? time?.minute() : '0' + time?.minute())
+                date: date?.date() + "." + ((date?.month() ?? 0) + 1) + "." + date?.year() + ' - kl: ' + time?.hour() + ":" + (time?.minute() as number >= 10 ? time?.minute() : '0' + time?.minute()),
+                text,
             });
             navigate("/sendt-reservasjon");
             setIsLoading(false)
@@ -170,6 +172,8 @@ export default function TableReservation() {
                     </label>
                 </div>
 
+
+
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <div className="flex max-w-[480px] flex-wrap items-end gap-4">
                         <label className="flex flex-col min-w-80 flex-1">
@@ -202,6 +206,21 @@ export default function TableReservation() {
                         </label>
                     </div>
                 </LocalizationProvider>
+
+                <div className="flex max-w-[480px] flex-wrap items-end">
+                    <label className="flex flex-col min-w-40 flex-1">
+                        <p className="text-[#181211] text-base font-medium leading-normal pb-2">Melding til restauranten</p>
+                        <textarea
+                            name="note"
+                            placeholder="Melding til restauranten"
+                            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181211] focus:outline-0 focus:ring-0 border-none bg-[#f4f1f0] focus:border-none h-14 placeholder:text-[#886963] p-4 text-base font-normal leading-normal"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                        ></textarea>
+
+                    </label>
+                </div>
+
 
                 <div className="flex">
                     <button

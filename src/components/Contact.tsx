@@ -21,8 +21,6 @@ export default function Contact() {
             setText("");
             alert("Meldingen ble sendt!")
         }
-
-
     }
 
     if (isLoading) return <h2>Sender melding, venligst vent.</h2>
