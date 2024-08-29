@@ -269,8 +269,8 @@ export const menuItems = [
     },
     {
         "menuItemId": "76",
-        "name": "Tempura Fotu Maki (10)",
-        "description": "frittert scampi & avokado, chilimajones og salat (10)",
+        "name": "Tempura Fotu Maki (12 biter)",
+        "description": "frittert scampi & avokado, chilimajones og salat (12 biter)",
         "category": "makiRolls",
         "allergens": ["se", "sk", "e", "gh"],
         "price": 134
@@ -325,8 +325,8 @@ export const menuItems = [
     },
     {
         "menuItemId": "72",
-        "name": "Nabo Fotu Maki (10)",
-        "description": "kamskjell, laks, kimchi, avokado og koriander",
+        "name": "Nabo Fotu Maki (12 biter)",
+        "description": "kamskjell, laks, kimchi, avokado og koriander (12 biter)",
         "category": "makiRolls",
         "allergens": ["se", "f", "bl"],
         "price": 134

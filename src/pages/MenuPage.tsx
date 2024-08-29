@@ -11,17 +11,17 @@ interface MenuCategory {
 
 const menuCategories: MenuCategory[] = [
     { title: "Asian soups and tapas", description: "", category: "asianSoupAndTapas" },
-    { title: "Nye Dim Sum", description: "6 pieces", category: "dimsum" },
+    { title: "Nye Dim Sum", description: "", category: "dimsum" },
     { title: "Small asian dishes", description: "", category: "smallAsianDishes" },
-    { title: "Raw fish appetizers", description: "6 pieces", category: "rawFishAppetizers" },
-    { title: "Maki rolls", description: "6 pieces", category: "makiRolls" },
+    { title: "Raw fish appetizers", description: "", category: "rawFishAppetizers" },
+    { title: "Maki rolls", description: "6 ~ 12 pieces", category: "makiRolls" },
     { title: "Sushi & sashimi dinner", description: "", category: "sushiDinner" },
     { title: "Wok and Stir fry", description: "", category: "wokAndStirFry" },
     { title: "Wok Fried Noodles And Rice", description: "", category: "wokFriedNoodlesAndRice" },
     { title: "Thai spicy soup", description: "", category: "thaiSpicyNoodleSoup" },
-    { title: "Choi's gunkan sushi", description: "2 pieces", category: "choisGunkanSushi" },
-    { title: "Choi's nigiri", description: "2 pieces", category: "choisNigiri" },
-    { title: "Choi's sashimi", description: "3 pieces", category: "choisSashimi" },
+    { title: "Gunkan sushi choice", description: "2 pieces", category: "choisGunkanSushi" },
+    { title: "Nigiri choice", description: "2 pieces", category: "choisNigiri" },
+    { title: "Sashimi choice", description: "3 pieces", category: "choisSashimi" },
     { title: "Drikke", description: "", category: "brus" },
     { title: "Tilbehør", description: "", category: "tilbehor" },
     { title: "Saus", description: "", category: "saus" }
