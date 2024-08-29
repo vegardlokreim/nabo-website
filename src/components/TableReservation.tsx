@@ -104,7 +104,7 @@ export default function TableReservation() {
                 name: formData.name,
                 phone: formData.phone.replace(/\s+/g, ""),
                 guests: formData.guests,
-                date: date?.date() + "." + ((date?.month() ?? 0) + 1) + "." + date?.year() + ' - kl: ' + time?.hour() + ":" + time?.minute()
+                date: date?.date() + "." + ((date?.month() ?? 0) + 1) + "." + date?.year() + ' - kl: ' + time?.hour() + ":" + (time?.minute() as number >= 10 ? time?.minute() : '0' + time?.minute())
             });
             navigate("/sendt-reservasjon");
             setIsLoading(false)

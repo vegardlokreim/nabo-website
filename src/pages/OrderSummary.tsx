@@ -54,7 +54,7 @@ const OrderSummary: React.FC = () => {
     const minuteNow = new Date().getMinutes()
     const [time, setTime] = useState<Dayjs | null>(dayjs().hour(hourNow >= 14 ? (minuteNow > 40 ? hourNow + 1 : hourNow) : 14).minute(hourNow >= 14 ? (minuteNow > 40 ? (minuteNow - 40) : minuteNow + 20) : 20));
 
- 
+
     const [errors, setErrors] = useState({
         name: "",
         phone: "",
@@ -147,7 +147,7 @@ const OrderSummary: React.FC = () => {
                         user: {
                             name,
                             phone: phone.replace(/\s+/g, ""),
-                            pickuptime: today + ' - kl: ' + time?.hour() + ":" + time?.minute(),
+                            pickuptime: today + ' - kl: ' + time?.hour() + ":" + (time?.minute() as number >= 10 ? time?.minute() : '0' + time?.minute()),
                             message: note,
                         }
                     }),
@@ -288,7 +288,7 @@ const OrderSummary: React.FC = () => {
                                                     value={time}
                                                     onChange={handleTimeChange}
                                                     ampm={false}
-                                                    minTime={dayjs().hour(hourNow >= 14 ? (minuteNow > 40 ? hourNow + 1 : hourNow) : 14).minute(hourNow >= 14 ? (minuteNow  > 40 ? (minuteNow - 40) : minuteNow + 20) : 20)}
+                                                    minTime={dayjs().hour(hourNow >= 14 ? (minuteNow > 40 ? hourNow + 1 : hourNow) : 14).minute(hourNow >= 14 ? (minuteNow > 40 ? (minuteNow - 40) : minuteNow + 20) : 20)}
                                                     maxTime={dayjs().hour(21).minute(50)}
                                                     timeSteps={{ hours: 1, minutes: 1 }}
                                                 />
