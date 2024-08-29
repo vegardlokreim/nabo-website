@@ -28,9 +28,8 @@ export default function TableReservation() {
 
     const today = dayjs().format('YYYY-MM-DD');
     const [date, setDate] = useState<Dayjs | null>(dayjs(today));
-    const hourNow = new Date().getHours()
-    const minuteNow = new Date().getMinutes()
-    const [time, setTime] = useState<Dayjs | null>(dayjs().hour(hourNow >= 14 ? hourNow : 14).minute(hourNow >= 14 ? minuteNow : 5));
+
+    const [time, setTime] = useState<Dayjs | null>();
 
 
     const [isLoading, setIsLoading] = useState(false)

@@ -7,9 +7,9 @@ import AboutPage from "./pages/AboutPage.tsx";
 import OrderSummary from "./pages/OrderSummary.tsx";
 import ConfirmOrderPage from "./pages/ConfirmOrderPage.tsx";
 import OrderReceivedPage from "./pages/OrderRecievedPage.tsx";
-import ConfirmReservationpage from "./pages/ConfirmReservationPage.tsx";
 import ReservationReceivedPage from "./pages/ReservationReceivedPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
+import ConfirmReservationPage from "./pages/ConfirmReservationPage.tsx";
 
 function App() {
     return (
@@ -23,7 +23,7 @@ function App() {
                     <Route path="/bestill" element={<OrderSummary />} />
                     <Route path="/confirm-order/:id" element={<ConfirmOrderPage />} />
                     <Route path="/received-order/:id" element={<OrderReceivedPage />} />
-                    <Route path="/confirm-table-reservation/:id" element={<ConfirmReservationpage />} />
+                    <Route path="/confirm-table-reservation/:id" element={<ConfirmReservationPage />} />
                     <Route path="/sendt-reservasjon" element={<ReservationReceivedPage />} />
                 </Route>
             </Routes>
