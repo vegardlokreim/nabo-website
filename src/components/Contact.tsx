@@ -18,6 +18,7 @@ export default function Contact() {
             setIsLoading(false)
             setReplyTo("");
             setName("");
+            setText("");
             return <h2>Din melding er sendt</h2>
         }
 
