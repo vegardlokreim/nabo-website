@@ -15,7 +15,7 @@ export default function HomePage() {
             <h2 className="text-[#181411] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
                 Suhsirestaurant på Majorstuen</h2>
             <p className="text-[#181411] text-base font-normal leading-normal pb-3 pt-1 px-4">
-                Nabo Kitchen & Bar har servert Oslos befolkning det beste innen japansk og kinesisk mat i over snart 30 år. Vi ligger midt plassert midt i hjertet av Majorstuen, ved siden av Colosseum Kino. Vi er det perfekte stedet for et måltid før eller etter en kino. Restauranten vår er kjent for sin elegante innredning og vennlige personale, og tilbyr en rolig flukt fra byens travle liv.
+                Nabo Kitchen & Bar har servert Oslos befolkning det beste innen japansk og kinesisk mat i siden år 2000. Vi ligger midt plassert midt i hjertet av Majorstuen, ved siden av Colosseum Kino. Vi er det perfekte stedet for et måltid før eller etter en kino. Restauranten vår er kjent for sin elegante innredning og vennlige personale, og tilbyr en rolig flukt fra byens travle liv.
             </p>
             <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
                 <div className="flex flex-col gap-3">
