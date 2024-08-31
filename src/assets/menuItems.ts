@@ -118,7 +118,15 @@ export const menuItems = [
     {
         "menuItemId": "19",
         "name": "Lee’s Claypot",
-        "description": "biff, kylling, scampi, kamskjell, laksefilet med friske grønnsaker i kombinasjon, braisert i en herlig soyabønne saus eller Nabo currysaus",
+        "description": "biff, kylling, scampi, kamskjell, laksefilet med friske grønnsaker i kombinasjon, braisert i en herlig soyabønne saus",
+        "category": "wokAndStirFry",
+        "allergens": ["so", "sk", "f"],
+        "price": 207
+    },
+    {
+        "menuItemId": "19x",
+        "name": "Lee’s Claypot",
+        "description": "biff, kylling, scampi, kamskjell, laksefilet med friske grønnsaker i kombinasjon, braisert i Nabo currysaus",
         "category": "wokAndStirFry",
         "allergens": ["so", "sk", "f"],
         "price": 207
