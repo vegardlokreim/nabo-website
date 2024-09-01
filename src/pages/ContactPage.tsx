@@ -3,6 +3,7 @@ import PageContainer from "../components/PageContainer";
 import { useState } from "react";
 import Contact from "../components/Contact";
 import TableReservationPage from "../components/TableReservation";
+import useScrollToTop from "../components/useScrollToTop";
 
 export default function ContactPage() {
     const [alignment, setAlignment] = useState('tablereservation');
@@ -14,9 +15,11 @@ export default function ContactPage() {
         console.log(event)
         setAlignment(newAlignment);
     };
-
+    useScrollToTop();
     return (
         <PageContainer>
+
+
             <div className="">
                 <div className="flex flex-col justify-center items-center large:w-[60vw]">
                     <ToggleButtonGroup

@@ -24,6 +24,7 @@ export default function Contact() {
     }
 
     if (isLoading) return <h2>Sender melding, venligst vent.</h2>
+
     return (
         <div className="pt-8">
 
