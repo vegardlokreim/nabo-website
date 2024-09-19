@@ -2,32 +2,34 @@ import React, { useState, useEffect, useRef } from 'react';
 import Menu from "../components/Menu/Menu";
 import PageContainer from "../components/PageContainer";
 import { useMediaQuery } from 'react-responsive';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { db } from '../../firebaseConfig';
 
-interface MenuCategory {
-    title: string;
-    description: string;
-    category: string;
-}
-
-const menuCategories: MenuCategory[] = [
-    { title: "Asian soups and tapas", description: "", category: "asianSoupAndTapas" },
-    { title: "Nye Dim Sum", description: "", category: "dimsum" },
-    { title: "Small asian dishes", description: "", category: "smallAsianDishes" },
-    { title: "Raw fish appetizers", description: "", category: "rawFishAppetizers" },
-    { title: "Maki rolls", description: "6 ~ 12 pieces", category: "makiRolls" },
-    { title: "Sushi & sashimi dinner", description: "", category: "sushiDinner" },
-    { title: "Wok and Stir fry", description: "", category: "wokAndStirFry" },
-    { title: "Wok Fried Noodles And Rice", description: "", category: "wokFriedNoodlesAndRice" },
-    { title: "Thai spicy soup", description: "", category: "thaiSpicyNoodleSoup" },
-    { title: "Gunkan sushi choice", description: "2 pieces", category: "choisGunkanSushi" },
-    { title: "Nigiri choice", description: "2 pieces", category: "choisNigiri" },
-    { title: "Sashimi choice", description: "3 pieces", category: "choisSashimi" },
-    { title: "Drikke", description: "", category: "brus" },
-    { title: "Tilbehør", description: "", category: "tilbehor" },
-    { title: "Saus", description: "", category: "saus" }
-];
 
 const MenuPage: React.FC = () => {
+
+    const [menuItems, setMenuItems] = useState<any[]>([]);
+    const [categories, setCategories] = useState<string[]>([])
+
+    useEffect(() => {
+        const takeawayRef = collection(db, 'takeaway');
+        const unsubscribe = onSnapshot(takeawayRef, (snapshot) => {
+            const takeaway = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+            } as any));
+
+            const sortedTakeaway = takeaway.sort((a, b) => (a.order || 0) - (b.order || 0));
+
+            setCategories(sortedTakeaway.map(category => category.category))
+
+            setMenuItems(sortedTakeaway);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
     const categoryRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
     const isMobile = useMediaQuery({ query: '(max-width: 901px)' });
@@ -36,12 +38,12 @@ const MenuPage: React.FC = () => {
     useEffect(() => {
         const handleScroll = () => {
             let currentCategory: string | null = null;
-            for (const category of menuCategories) {
-                const element = categoryRefs.current[category.category];
+            for (const category of categories) {
+                const element = categoryRefs.current[category];
                 if (element) {
                     const rect = element.getBoundingClientRect();
                     if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                        currentCategory = category.category;
+                        currentCategory = category;
                         break;
                     }
                 }
@@ -63,30 +65,28 @@ const MenuPage: React.FC = () => {
     return (
         <>
             <PageContainer>
-                {menuCategories.map((menu, index) => (
+                {menuItems.map((menu, index) => (
                     <div key={index} ref={el => categoryRefs.current[menu.category] = el}>
                         <Menu
-                            title={menu.title}
+                            title={menu.category}
                             description={menu.description}
                             backgroundImg="https://cdn.usegalileo.ai/sdxl10/69f9ae9a-d2c1-4a31-b2be-051b10bf0b46.png"
-                            category={menu.category}
+                            items={menu.items}
+                            category={menu.id}
                         />
                     </div>
                 ))}
 
-
-
-
             </PageContainer>
             <div className={`fixed ${isMobile ? 'bottom-[58px]' : 'bottom-0'} w-full shadow-lg border-t-2 bg-white flex justify-start text-black text-sm z-50 overflow-x-auto`}>
                 <div className="flex">
-                    {menuCategories.map((menu) => (
+                    {categories.map((category) => (
                         <div
-                            key={menu.category}
-                            className={`p-4 cursor-pointer transition-colors whitespace-nowrap ${activeCategory === menu.category ? 'text-[#B2212B]' : ''}`}
-                            onClick={() => handleCategoryClick(menu.category)}
+                            key={category}
+                            className={`p-4 cursor-pointer transition-colors whitespace-nowrap ${activeCategory === category ? 'text-[#B2212B]' : ''}`}
+                            onClick={() => handleCategoryClick(category)}
                         >
-                            {menu.title}
+                            {category}
                         </div>
                     ))}
                 </div>
