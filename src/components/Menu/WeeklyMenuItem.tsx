@@ -4,11 +4,11 @@ interface WeeklyMenuItemProps {
     description: string
     prefix: string
     allergens: string[]
-    id: string
+    id?: string
 
 }
 
-export default function WeeklyMenuItem({ title, price, description, prefix, allergens, id }: WeeklyMenuItemProps) {
+export default function WeeklyMenuItem({ title, price, description, prefix, allergens }: WeeklyMenuItemProps) {
 
     return (
         <div className="text-center uppercase mb-4">

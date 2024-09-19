@@ -5,7 +5,6 @@ import WeeklyMenu from "../components/Menu/WeeklyMenu";
 
 export function Demo() {
     const [menuItems, setMenuItems] = useState<any[]>([]);
-    const [days, setDays] = useState<string[]>([])
 
     useEffect(() => {
         const takeawayRef = collection(db, 'weeklyMenu');

@@ -3,13 +3,13 @@ import WeeklyMenuItem from "./WeeklyMenuItem"
 interface MenuProps {
     day: string
     items: any[]
-    title: string
-    prefix: string
-    description: string
-    backgroundImg: string
+    title?: string
+    prefix?: string
+    description?: string
+    backgroundImg?: string
 
 }
-export default function WeeklyMenu({ title, description, items, day, }: MenuProps) {
+export default function WeeklyMenu({ items, day, }: MenuProps) {
     return (
         <div className="mb-16 text-center">
             <h1 className="text-[38px] font-bold text-[#B2212B] uppercase">{day}</h1>
