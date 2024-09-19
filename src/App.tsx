@@ -10,6 +10,7 @@ import OrderReceivedPage from "./pages/OrderRecievedPage.tsx";
 import ReservationReceivedPage from "./pages/ReservationReceivedPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import ConfirmReservationPage from "./pages/ConfirmReservationPage.tsx";
+import { Demo } from "./pages/Demo.tsx";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/received-order/:id" element={<OrderReceivedPage />} />
                     <Route path="/confirm-table-reservation/:id" element={<ConfirmReservationPage />} />
                     <Route path="/sendt-reservasjon" element={<ReservationReceivedPage />} />
+                    <Route path="/demo" element={<Demo />} />
                 </Route>
             </Routes>
         </BrowserRouter>
