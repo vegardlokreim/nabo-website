@@ -27,6 +27,8 @@ export default function Header() {
                 <div className="flex items-center gap-9">
                     <a className="text-[#181411] text-sm font-medium leading-normal" href="/">Hjem</a>
                     <a className="text-[#181411] text-sm font-medium leading-normal" href="/meny">Takeaway</a>
+                    <a className="text-[#181411] text-sm font-medium leading-normal" href="/ukesmeny">Ukesmeny</a>
+
                     <a className="text-[#181411] text-sm font-medium leading-normal" href="/om-oss">Om</a>
                     <a className="text-[#181411] text-sm font-medium leading-normal" href="/kontakt">Kontakt</a>
                 </div>

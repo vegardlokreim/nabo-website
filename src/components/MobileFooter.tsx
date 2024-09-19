@@ -24,6 +24,19 @@ export default function Footer() {
                     <p className="text-[#897261] text-xs font-medium leading-normal tracking-[0.015em]">Takeaway</p>
                 </a>
 
+                <a className="just flex flex-1 flex-col items-center justify-end gap-2 text-[#897261]" href="/ukesmeny">
+                    <div className="text-[#897261] flex h-8 items-center justify-center" data-icon="Calendar" data-size="24px" data-weight="regular">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                            <rect x="40" y="64" width="176" height="152" rx="8" ry="8" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" />
+                            <line x1="40" y1="112" x2="216" y2="112" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" />
+                            <line x1="80" y1="32" x2="80" y2="64" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" />
+                            <line x1="176" y1="32" x2="176" y2="64" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" />
+                        </svg>
+                    </div>
+                    <p className="text-[#897261] text-xs font-medium leading-normal tracking-[0.015em]">Ukens</p>
+                </a>
+
+
                 <a className="just flex flex-1 flex-col items-center justify-end gap-1 text-[#897261]" href="/om-oss">
                     <div className="text-[#897261] flex h-8 items-center justify-center" data-icon="UserCircle" data-size="24px" data-weight="regular">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
